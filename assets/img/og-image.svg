@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="ogTitle ogDesc">
+  <title id="ogTitle">Digital Solutions Open Graph</title>
+  <desc id="ogDesc">Hero Grafik mit Titel</desc>
+  <defs>
+    <linearGradient id="og" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b6efd"/>
+      <stop offset="100%" stop-color="#4dabff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#0c1526"/>
+  <rect x="60" y="60" width="1080" height="510" rx="48" fill="url(#og)" opacity="0.85"/>
+  <text x="120" y="260" font-family="'Inter',sans-serif" font-size="72" fill="#fff" font-weight="700">Digital Solutions</text>
+  <text x="120" y="340" font-family="'Inter',sans-serif" font-size="42" fill="#e6f1ff">Websites, Automatisierung, Integrationen</text>
+</svg>

@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="de" data-page="index">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Digital Solutions – IT-Lösungen, die Arbeit sparen</title>
+  <meta name="description" content="Digital Solutions aus der Schweiz entwickelt Webseiten, automatisiert Prozesse und integriert Systeme für schnellere, messbare Ergebnisse.">
+  <link rel="canonical" href="https://www.example.com/">
+  <link rel="alternate" hreflang="de" href="https://www.example.com/">
+  <link rel="alternate" hreflang="en" href="https://www.example.com/?lang=en">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Digital Solutions – IT-Lösungen, die Arbeit sparen">
+  <meta property="og:description" content="Webseiten, Automatisierungen und Integrationen – schnell, stabil, messbar.">
+  <meta property="og:url" content="https://www.example.com/">
+  <meta property="og:image" content="https://www.example.com/assets/img/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Digital Solutions – IT-Lösungen, die Arbeit sparen">
+  <meta name="twitter:description" content="Webseiten, Automatisierungen und Integrationen – schnell, stabil, messbar.">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="theme-color" content="#0b6efd">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Digital Solutions",
+    "url": "https://www.example.com/",
+    "logo": "https://www.example.com/favicon.svg",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "sales",
+      "telephone": "+41 44 000 00 00",
+      "email": "hallo@example.com"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/digital-solutions"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Digital Solutions",
+    "url": "https://www.example.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://www.example.com/?s={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Startseite",
+      "item": "https://www.example.com/"
+    }]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light bg-body" aria-label="Hauptnavigation">
+      <div class="container-xl">
+        <a class="navbar-brand d-flex align-items-center" href="/">
+          <img src="/assets/img/logo.svg" alt="Digital Solutions Logo" width="36" height="36" class="me-2">
+          <span class="fw-semibold">Digital Solutions</span>
+        </a>
+        <button class="navbar-toggler" type="button" aria-controls="mainNav" aria-expanded="false" aria-label="Menü umschalten">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+            <li class="nav-item"><a class="nav-link active" href="/" data-i18n="nav.home">Start</a></li>
+            <li class="nav-item"><a class="nav-link" href="/leistungen.html" data-i18n="nav.services">Leistungen</a></li>
+            <li class="nav-item"><a class="nav-link" href="/referenzen.html" data-i18n="nav.work">Referenzen</a></li>
+            <li class="nav-item"><a class="nav-link" href="/ueber-uns.html" data-i18n="nav.about">Über uns</a></li>
+            <li class="nav-item"><a class="nav-link" href="/kontakt.html" data-i18n="nav.contact">Kontakt</a></li>
+            <li class="nav-item ms-lg-3">
+              <button class="btn btn-accent" data-i18n="nav.cta" data-nav-cta>Projekt anfragen</button>
+            </li>
+            <li class="nav-item ms-lg-3">
+              <button class="btn btn-outline-secondary btn-sm" type="button" data-lang-toggle aria-haspopup="listbox" aria-expanded="false">DE</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="container-xl">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-7" data-i18n-scope="hero">
+            <span class="badge bg-accent-soft text-accent fw-medium mb-3" data-i18n="hero.tagline">IT-Lösungen, die Arbeit sparen.</span>
+            <h1 class="display-4 fw-semibold" data-i18n="hero.title">Wir digitalisieren, automatisieren und bauen Webseiten, die verkaufen.</h1>
+            <p class="lead text-body-secondary" data-i18n="hero.subtitle">Für KMU und Enterprise: messbar schneller, weniger manuell, skalierbar.</p>
+            <div class="d-flex flex-wrap gap-3 mt-4">
+              <a class="btn btn-accent btn-lg" href="/kontakt.html" data-i18n="hero.primaryCta">Kostenloses Erstgespräch</a>
+              <a class="btn btn-outline-secondary btn-lg" href="#services" data-scroll data-i18n="hero.secondaryCta">Leistungen ansehen</a>
+            </div>
+            <ul class="list-unstyled d-flex flex-column flex-md-row gap-3 mt-4" data-i18n-scope="hero.bullets">
+              <li class="d-flex align-items-center gap-2"><span class="badge rounded-pill bg-accent-soft text-accent">1</span> <span data-i18n="hero.bullets.0">30–60% weniger manuelle Klickarbeit</span></li>
+              <li class="d-flex align-items-center gap-2"><span class="badge rounded-pill bg-accent-soft text-accent">2</span> <span data-i18n="hero.bullets.1">Schnelle Umsetzung, klare Fixpreise</span></li>
+              <li class="d-flex align-items-center gap-2"><span class="badge rounded-pill bg-accent-soft text-accent">3</span> <span data-i18n="hero.bullets.2">Support, der echte Probleme löst</span></li>
+            </ul>
+          </div>
+          <div class="col-lg-5">
+            <div class="hero-visual" role="presentation" aria-hidden="true">
+              <img src="/assets/img/hero-illustration.svg" alt="" width="520" height="360" loading="eager">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5 bg-body-secondary-subtle" aria-label="Vertrauen" data-i18n-scope="trust">
+      <div class="container-xl">
+        <div class="row align-items-center gy-4">
+          <div class="col-md-3">
+            <p class="text-body-secondary m-0" data-i18n="trust.title">Vertrauen von Branchenführern:</p>
+          </div>
+          <div class="col-md-9">
+            <div class="d-flex flex-wrap gap-4 justify-content-around" aria-hidden="true">
+              <img src="/assets/img/logo-client-1.svg" width="120" height="36" alt="Swiss Manufacturing" loading="lazy">
+              <img src="/assets/img/logo-client-2.svg" width="120" height="36" alt="FinTech AG" loading="lazy">
+              <img src="/assets/img/logo-client-3.svg" width="120" height="36" alt="Healthcare Suisse" loading="lazy">
+              <img src="/assets/img/logo-client-4.svg" width="120" height="36" alt="Retail Group" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5" id="services" data-i18n-scope="services">
+      <div class="container-xl">
+        <div class="row align-items-center mb-5">
+          <div class="col-md-8">
+            <h2 class="h1" data-i18n="services.title">Leistungen, die wirken</h2>
+            <p class="text-body-secondary" data-i18n="services.intro">Wir bauen, automatisieren und verbinden – damit Teams mehr schaffen.</p>
+          </div>
+          <div class="col-md-4 text-md-end">
+            <a class="btn btn-outline-secondary" href="/leistungen.html" data-i18n="services.link">Alle Leistungen im Detail</a>
+          </div>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3">
+            <article class="card h-100 shadow-sm border-0 rounded-4">
+              <div class="card-body">
+                <h3 class="h4" data-i18n="services.items.web.title">Webseiten &amp; Web-Apps</h3>
+                <p data-i18n="services.items.web.copy">Conversion-starke Seiten, saubere Code-Basis, schnelle Ladezeiten.</p>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <article class="card h-100 shadow-sm border-0 rounded-4">
+              <div class="card-body">
+                <h3 class="h4" data-i18n="services.items.automation.title">Prozesse automatisieren</h3>
+                <p data-i18n="services.items.automation.copy">Wiederkehrende Aufgaben eliminieren: Bots, Workflows, n8n/Zapier, Scripte.</p>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <article class="card h-100 shadow-sm border-0 rounded-4">
+              <div class="card-body">
+                <h3 class="h4" data-i18n="services.items.integration.title">Schnittstellen &amp; Daten</h3>
+                <p data-i18n="services.items.integration.copy">APIs anbinden, Systeme synchronisieren, Reports automatisieren.</p>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <article class="card h-100 shadow-sm border-0 rounded-4">
+              <div class="card-body">
+                <h3 class="h4" data-i18n="services.items.care.title">Hosting &amp; Betreuung</h3>
+                <p data-i18n="services.items.care.copy">Updates, Monitoring, Backups – ohne Ausreden.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5 bg-body-secondary-subtle" id="process" data-i18n-scope="process">
+      <div class="container-xl">
+        <div class="row mb-4">
+          <div class="col">
+            <h2 class="h1" data-i18n="process.title">So arbeiten wir</h2>
+            <p class="text-body-secondary" data-i18n="process.intro">Transparente Schritte vom Kick-off bis zum Betrieb.</p>
+          </div>
+        </div>
+        <div class="timeline row row-cols-1 row-cols-lg-5 g-4">
+          <div class="col">
+            <div class="timeline-item h-100">
+              <span class="timeline-step">1</span>
+              <h3 class="h5" data-i18n="process.steps.0.title">Analyse</h3>
+              <p data-i18n="process.steps.0.copy">Status quo, Ziele, Stakeholder. Wir hören zu.</p>
+            </div>
+          </div>
+          <div class="col">
+            <div class="timeline-item h-100">
+              <span class="timeline-step">2</span>
+              <h3 class="h5" data-i18n="process.steps.1.title">Konzept</h3>
+              <p data-i18n="process.steps.1.copy">Architektur, UX-Flows, Automatisierungsplan.</p>
+            </div>
+          </div>
+          <div class="col">
+            <div class="timeline-item h-100">
+              <span class="timeline-step">3</span>
+              <h3 class="h5" data-i18n="process.steps.2.title">Prototyp</h3>
+              <p data-i18n="process.steps.2.copy">Klickbarer Proof für schnelles Feedback.</p>
+            </div>
+          </div>
+          <div class="col">
+            <div class="timeline-item h-100">
+              <span class="timeline-step">4</span>
+              <h3 class="h5" data-i18n="process.steps.3.title">Umsetzung</h3>
+              <p data-i18n="process.steps.3.copy">Iterativ, testgetrieben, mit klarer Kommunikation.</p>
+            </div>
+          </div>
+          <div class="col">
+            <div class="timeline-item h-100">
+              <span class="timeline-step">5</span>
+              <h3 class="h5" data-i18n="process.steps.4.title">Betrieb</h3>
+              <p data-i18n="process.steps.4.copy">Monitoring, Optimierung, kontinuierliche Automatisierung.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5" data-i18n-scope="metrics">
+      <div class="container-xl">
+        <div class="row mb-4">
+          <div class="col">
+            <h2 class="h1" data-i18n="metrics.title">Messbare Ergebnisse</h2>
+            <p class="text-body-secondary" data-i18n="metrics.subtitle">Zahlen, die nach drei Monaten Projektdauer typisch sind.</p>
+          </div>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="metric-card">
+              <span class="metric-value" data-i18n="metrics.items.0.value">40%</span>
+              <p class="metric-label" data-i18n="metrics.items.0.label">weniger manueller Aufwand</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="metric-card">
+              <span class="metric-value" data-i18n="metrics.items.1.value">&lt;300ms</span>
+              <p class="metric-label" data-i18n="metrics.items.1.label">Time to Interactive</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="metric-card">
+              <span class="metric-value" data-i18n="metrics.items.2.value">+30</span>
+              <p class="metric-label" data-i18n="metrics.items.2.label">Net Promoter Score</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5 bg-body-secondary-subtle" data-i18n-scope="cases">
+      <div class="container-xl">
+        <div class="row align-items-center mb-5">
+          <div class="col-md-8">
+            <h2 class="h1" data-i18n="cases.title">Referenzen, die liefern</h2>
+            <p class="text-body-secondary" data-i18n="cases.subtitle">Drei Beispiele, wie wir Projekte auf Kurs gebracht haben.</p>
+          </div>
+          <div class="col-md-4 text-md-end">
+            <a class="btn btn-outline-secondary" href="/referenzen.html" data-i18n="cases.link">Alle Referenzen</a>
+          </div>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <article class="card h-100 shadow-sm border-0 rounded-4">
+              <img src="/assets/img/case-web.svg" class="card-img-top" alt="Case Web" width="400" height="220" loading="lazy">
+              <div class="card-body">
+                <h3 class="h5" data-i18n="cases.items.0.title">B2B SaaS Website Relaunch</h3>
+                <p data-i18n="cases.items.0.copy">Konversion +45% nach neuem Messaging, Headless CMS, PageSpeed 98.</p>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-4">
+            <article class="card h-100 shadow-sm border-0 rounded-4">
+              <img src="/assets/img/case-automation.svg" class="card-img-top" alt="Case Automation" width="400" height="220" loading="lazy">
+              <div class="card-body">
+                <h3 class="h5" data-i18n="cases.items.1.title">Support-Automatisierung</h3>
+                <p data-i18n="cases.items.1.copy">Tickets werden triagiert, Slack-Bots lösen Standardfälle – 35% weniger Tickets.</p>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-4">
+            <article class="card h-100 shadow-sm border-0 rounded-4">
+              <img src="/assets/img/case-integration.svg" class="card-img-top" alt="Case Integration" width="400" height="220" loading="lazy">
+              <div class="card-body">
+                <h3 class="h5" data-i18n="cases.items.2.title">ERP &amp; CRM Integration</h3>
+                <p data-i18n="cases.items.2.copy">Automatisierte Bestellungen, wöchentliche Reports, Null Doppel-Erfassung.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5" data-i18n-scope="tech">
+      <div class="container-xl">
+        <div class="row mb-4">
+          <div class="col">
+            <h2 class="h1" data-i18n="tech.title">Tech-Stack &amp; Tools</h2>
+            <p class="text-body-secondary" data-i18n="tech.subtitle">Wir kombinieren bewährte Plattformen mit modernen Frameworks.</p>
+          </div>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Tech Stack Tabs">
+          <button class="tab-button active" role="tab" aria-selected="true" data-tab="web" data-i18n="tech.tabs.web">Web</button>
+          <button class="tab-button" role="tab" aria-selected="false" data-tab="automation" data-i18n="tech.tabs.automation">Automation</button>
+          <button class="tab-button" role="tab" aria-selected="false" data-tab="data" data-i18n="tech.tabs.data">Data &amp; Integrationen</button>
+        </div>
+        <div class="tab-panels" data-i18n-scope="tech.panels">
+          <div class="tab-panel active" data-tab-panel="web">
+            <ul class="tech-logos list-unstyled d-flex flex-wrap gap-3">
+              <li><img src="/assets/img/logo-bootstrap.svg" alt="Bootstrap" width="80" height="24" loading="lazy"></li>
+              <li><img src="/assets/img/logo-vite.svg" alt="Vite" width="80" height="24" loading="lazy"></li>
+              <li><img src="/assets/img/logo-laravel.svg" alt="Laravel" width="80" height="24" loading="lazy"></li>
+              <li><img src="/assets/img/logo-nextjs.svg" alt="Next.js" width="80" height="24" loading="lazy"></li>
+            </ul>
+          </div>
+          <div class="tab-panel" data-tab-panel="automation">
+            <ul class="tech-logos list-unstyled d-flex flex-wrap gap-3">
+              <li><img src="/assets/img/logo-n8n.svg" alt="n8n" width="80" height="24" loading="lazy"></li>
+              <li><img src="/assets/img/logo-zapier.svg" alt="Zapier" width="80" height="24" loading="lazy"></li>
+              <li><img src="/assets/img/logo-python.svg" alt="Python" width="80" height="24" loading="lazy"></li>
+              <li><img src="/assets/img/logo-rpa.svg" alt="RPA" width="80" height="24" loading="lazy"></li>
+            </ul>
+          </div>
+          <div class="tab-panel" data-tab-panel="data">
+            <ul class="tech-logos list-unstyled d-flex flex-wrap gap-3">
+              <li><img src="/assets/img/logo-postgresql.svg" alt="PostgreSQL" width="80" height="24" loading="lazy"></li>
+              <li><img src="/assets/img/logo-aws.svg" alt="AWS" width="80" height="24" loading="lazy"></li>
+              <li><img src="/assets/img/logo-snowflake.svg" alt="Snowflake" width="80" height="24" loading="lazy"></li>
+              <li><img src="/assets/img/logo-mulesoft.svg" alt="MuleSoft" width="80" height="24" loading="lazy"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5 bg-body-secondary-subtle" data-i18n-scope="testimonials">
+      <div class="container-xl">
+        <div class="row mb-4">
+          <div class="col">
+            <h2 class="h1" data-i18n="testimonials.title">Kundenstimmen</h2>
+            <p class="text-body-secondary" data-i18n="testimonials.subtitle">Wir liefern Ergebnisse, keine Ausreden.</p>
+          </div>
+        </div>
+        <div class="testimonial-slider" data-slider>
+          <button class="slider-control prev" aria-label="Vorheriges Testimonial" data-slider-prev>&larr;</button>
+          <div class="slider-track" data-slider-track>
+            <article class="testimonial" data-i18n-scope="testimonials.items.0">
+              <p class="testimonial-text" data-i18n="testimonials.items.0.quote">„Digital Solutions hat unseren B2B-Shop in 5 Wochen neu aufgebaut. Conversion +52%."</p>
+              <p class="testimonial-author" data-i18n="testimonials.items.0.author">Leitung Digital, Industrie AG</p>
+            </article>
+            <article class="testimonial" data-i18n-scope="testimonials.items.1">
+              <p class="testimonial-text" data-i18n="testimonials.items.1.quote">„Support-Automatisierungen sparen uns jede Woche 40 Stunden. Tickets werden automatisch priorisiert."</p>
+              <p class="testimonial-author" data-i18n="testimonials.items.1.author">Head of Operations, ServicePlus</p>
+            </article>
+            <article class="testimonial" data-i18n-scope="testimonials.items.2">
+              <p class="testimonial-text" data-i18n="testimonials.items.2.quote">„Integration ERP &amp; CRM ohne Downtime. Datenqualität +100%."</p>
+              <p class="testimonial-author" data-i18n="testimonials.items.2.author">CIO, Logistics Corp</p>
+            </article>
+          </div>
+          <button class="slider-control next" aria-label="Nächstes Testimonial" data-slider-next>&rarr;</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5" data-i18n-scope="pricing">
+      <div class="container-xl">
+        <div class="row mb-4">
+          <div class="col">
+            <h2 class="h1" data-i18n="pricing.title">Pakete &amp; Fixpreise</h2>
+            <p class="text-body-secondary" data-i18n="pricing.subtitle">Transparente Einstiegspakete, individuell erweiterbar.</p>
+          </div>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0 rounded-4">
+              <div class="card-body">
+                <h3 class="h4" data-i18n="pricing.items.0.title">Website Basic</h3>
+                <p class="display-6 fw-semibold" data-i18n="pricing.items.0.price">ab CHF 2’500</p>
+                <ul class="list-unstyled" data-i18n-scope="pricing.items.0.features">
+                  <li data-i18n="pricing.items.0.features.0">Landingpage oder Microsite</li>
+                  <li data-i18n="pricing.items.0.features.1">SEO-Basis, Tracking Setup</li>
+                  <li data-i18n="pricing.items.0.features.2">1 Woche Support</li>
+                </ul>
+                <a class="btn btn-outline-secondary w-100" href="/kontakt.html" data-i18n="pricing.cta">Projekt anfragen</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100 shadow-lg border-0 rounded-4 featured">
+              <div class="card-body">
+                <h3 class="h4" data-i18n="pricing.items.1.title">Automation Sprint</h3>
+                <p class="display-6 fw-semibold" data-i18n="pricing.items.1.price">ab CHF 4’500</p>
+                <ul class="list-unstyled" data-i18n-scope="pricing.items.1.features">
+                  <li data-i18n="pricing.items.1.features.0">Analyse &amp; Setup n8n/Zapier</li>
+                  <li data-i18n="pricing.items.1.features.1">Bots &amp; Workflows (bis 3)</li>
+                  <li data-i18n="pricing.items.1.features.2">Schulung &amp; Übergabe</li>
+                </ul>
+                <a class="btn btn-accent w-100" href="/kontakt.html" data-i18n="pricing.cta">Projekt anfragen</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0 rounded-4">
+              <div class="card-body">
+                <h3 class="h4" data-i18n="pricing.items.2.title">Integration Plus</h3>
+                <p class="display-6 fw-semibold" data-i18n="pricing.items.2.price">ab CHF 6’900</p>
+                <ul class="list-unstyled" data-i18n-scope="pricing.items.2.features">
+                  <li data-i18n="pricing.items.2.features.0">Systemanalyse &amp; Architektur</li>
+                  <li data-i18n="pricing.items.2.features.1">Sichere API-Integrationen</li>
+                  <li data-i18n="pricing.items.2.features.2">Monitoring &amp; Dokumentation</li>
+                </ul>
+                <a class="btn btn-outline-secondary w-100" href="/kontakt.html" data-i18n="pricing.cta">Projekt anfragen</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5 bg-body-secondary-subtle" data-i18n-scope="faq">
+      <div class="container-xl">
+        <div class="row mb-4">
+          <div class="col">
+            <h2 class="h1" data-i18n="faq.title">Häufige Fragen</h2>
+            <p class="text-body-secondary" data-i18n="faq.subtitle">Klare Antworten für schnelle Entscheidungen.</p>
+          </div>
+        </div>
+        <div class="accordion" id="faqAccordion">
+          <div class="accordion-item">
+            <h3 class="accordion-header" id="faq1">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="true" aria-controls="faqCollapse1" data-i18n="faq.items.0.question">Was kostet eine Website?</button>
+            </h3>
+            <div id="faqCollapse1" class="accordion-collapse collapse show" aria-labelledby="faq1" data-bs-parent="#faqAccordion">
+              <div class="accordion-body" data-i18n="faq.items.0.answer">Basic ab CHF 2’500, Business ab CHF 6’500, abhängig von Umfang/Integrationen.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-header" id="faq2">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2" data-i18n="faq.items.1.question">Wie schnell geht ein Projekt?</button>
+            </h3>
+            <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faq2" data-bs-parent="#faqAccordion">
+              <div class="accordion-body" data-i18n="faq.items.1.answer">MVP in 2–4 Wochen möglich, je nach Input/Entscheidungen.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-header" id="faq3">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse3" aria-expanded="false" aria-controls="faqCollapse3" data-i18n="faq.items.2.question">Automatisierungen – womit?</button>
+            </h3>
+            <div id="faqCollapse3" class="accordion-collapse collapse" aria-labelledby="faq3" data-bs-parent="#faqAccordion">
+              <div class="accordion-body" data-i18n="faq.items.2.answer">n8n, Python/PHP-Skripte, Webhooks, APIs der Zielsysteme.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-header" id="faq4">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse4" aria-expanded="false" aria-controls="faqCollapse4" data-i18n="faq.items.3.question">Arbeitet ihr mit bestehenden Teams?</button>
+            </h3>
+            <div id="faqCollapse4" class="accordion-collapse collapse" aria-labelledby="faq4" data-bs-parent="#faqAccordion">
+              <div class="accordion-body" data-i18n="faq.items.3.answer">Ja, wir arbeiten eng mit internen IT- und Business-Teams zusammen.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-header" id="faq5">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse5" aria-expanded="false" aria-controls="faqCollapse5" data-i18n="faq.items.4.question">Wie startet ein Projekt?</button>
+            </h3>
+            <div id="faqCollapse5" class="accordion-collapse collapse" aria-labelledby="faq5" data-bs-parent="#faqAccordion">
+              <div class="accordion-body" data-i18n="faq.items.4.answer">Kick-off Workshop, Scope-Definition, Angebot mit Fixpreis-Komponenten.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-header" id="faq6">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse6" aria-expanded="false" aria-controls="faqCollapse6" data-i18n="faq.items.5.question">Wie sieht Support aus?</button>
+            </h3>
+            <div id="faqCollapse6" class="accordion-collapse collapse" aria-labelledby="faq6" data-bs-parent="#faqAccordion">
+              <div class="accordion-body" data-i18n="faq.items.5.answer">SLA-basiert, Monitoring, priorisierte Eskalation via Slack/Teams.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5" data-i18n-scope="cta">
+      <div class="container-xl">
+        <div class="card shadow-lg border-0 rounded-4 bg-accent text-white p-5">
+          <div class="row align-items-center g-4">
+            <div class="col-lg-8">
+              <h2 class="h2 mb-3" data-i18n="cta.title">Bereit für weniger Klickarbeit?</h2>
+              <p class="lead mb-0" data-i18n="cta.subtitle">Wir zeigen in 30 Minuten, welche Automatisierung morgen startet.</p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+              <a class="btn btn-light btn-lg" href="/kontakt.html" data-i18n="cta.button">Projekt anfragen</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer mt-auto py-5 bg-body-tertiary" data-i18n-scope="footer">
+    <div class="container-xl">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <a href="/" class="d-inline-flex align-items-center mb-3 text-decoration-none">
+            <img src="/assets/img/logo.svg" alt="Digital Solutions" width="36" height="36" class="me-2">
+            <span class="fw-semibold">Digital Solutions</span>
+          </a>
+          <p class="text-body-secondary" data-i18n="footer.copy">Digitale Lösungen aus Zürich. Automatisierung, Integrationen, Web.</p>
+          <p class="small text-body-secondary mb-0">&copy; <span data-year></span> Digital Solutions. All rights reserved.</p>
+        </div>
+        <div class="col-md-4">
+          <h3 class="h6 text-uppercase text-body-secondary" data-i18n="footer.contact">Kontakt</h3>
+          <ul class="list-unstyled">
+            <li><a href="tel:+41440000000" class="link-body-emphasis">+41 44 000 00 00</a></li>
+            <li><a href="mailto:hallo@example.com" class="link-body-emphasis">hallo@example.com</a></li>
+            <li><span data-i18n="footer.address">Limmatquai 1, 8001 Zürich</span></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3 class="h6 text-uppercase text-body-secondary" data-i18n="footer.legal">Rechtliches</h3>
+          <ul class="list-unstyled">
+            <li><a href="/impressum.html" class="link-body-emphasis" data-i18n="footer.imprint">Impressum</a></li>
+            <li><a href="/datenschutz.html" class="link-body-emphasis" data-i18n="footer.privacy">Datenschutz</a></li>
+            <li><a href="/sitemap.xml" class="link-body-emphasis" data-i18n="footer.sitemap">Sitemap</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="lang-dropdown visually-hidden" role="listbox" aria-label="Sprachauswahl" data-lang-menu>
+    <button type="button" role="option" data-lang-option="de">Deutsch</button>
+    <button type="button" role="option" data-lang-option="en">English</button>
+  </div>
+
+  <script type="application/json" id="translations">
+  {
+    "de": {
+      "nav": {"home": "Start", "services": "Leistungen", "work": "Referenzen", "about": "Über uns", "contact": "Kontakt", "cta": "Projekt anfragen"},
+      "hero": {
+        "tagline": "IT-Lösungen, die Arbeit sparen.",
+        "title": "Wir digitalisieren, automatisieren und bauen Webseiten, die verkaufen.",
+        "subtitle": "Für KMU und Enterprise: messbar schneller, weniger manuell, skalierbar.",
+        "primaryCta": "Kostenloses Erstgespräch",
+        "secondaryCta": "Leistungen ansehen",
+        "bullets": [
+          "30–60% weniger manuelle Klickarbeit",
+          "Schnelle Umsetzung, klare Fixpreise",
+          "Support, der echte Probleme löst"
+        ]
+      },
+      "trust": {"title": "Vertrauen von Branchenführern:"},
+      "services": {
+        "title": "Leistungen, die wirken",
+        "intro": "Wir bauen, automatisieren und verbinden – damit Teams mehr schaffen.",
+        "link": "Alle Leistungen im Detail",
+        "items": {
+          "web": {"title": "Webseiten & Web-Apps", "copy": "Conversion-starke Seiten, saubere Code-Basis, schnelle Ladezeiten."},
+          "automation": {"title": "Prozesse automatisieren", "copy": "Wiederkehrende Aufgaben eliminieren: Bots, Workflows, n8n/Zapier, Scripte."},
+          "integration": {"title": "Schnittstellen & Daten", "copy": "APIs anbinden, Systeme synchronisieren, Reports automatisieren."},
+          "care": {"title": "Hosting & Betreuung", "copy": "Updates, Monitoring, Backups – ohne Ausreden."}
+        }
+      },
+      "process": {
+        "title": "So arbeiten wir",
+        "intro": "Transparente Schritte vom Kick-off bis zum Betrieb.",
+        "steps": [
+          {"title": "Analyse", "copy": "Status quo, Ziele, Stakeholder. Wir hören zu."},
+          {"title": "Konzept", "copy": "Architektur, UX-Flows, Automatisierungsplan."},
+          {"title": "Prototyp", "copy": "Klickbarer Proof für schnelles Feedback."},
+          {"title": "Umsetzung", "copy": "Iterativ, testgetrieben, mit klarer Kommunikation."},
+          {"title": "Betrieb", "copy": "Monitoring, Optimierung, kontinuierliche Automatisierung."}
+        ]
+      },
+      "metrics": {
+        "title": "Messbare Ergebnisse",
+        "subtitle": "Zahlen, die nach drei Monaten Projektdauer typisch sind.",
+        "items": [
+          {"value": "40%", "label": "weniger manueller Aufwand"},
+          {"value": "&lt;300ms", "label": "Time to Interactive"},
+          {"value": "+30", "label": "Net Promoter Score"}
+        ]
+      },
+      "cases": {
+        "title": "Referenzen, die liefern",
+        "subtitle": "Drei Beispiele, wie wir Projekte auf Kurs gebracht haben.",
+        "link": "Alle Referenzen",
+        "items": [
+          {"title": "B2B SaaS Website Relaunch", "copy": "Konversion +45% nach neuem Messaging, Headless CMS, PageSpeed 98."},
+          {"title": "Support-Automatisierung", "copy": "Tickets werden triagiert, Slack-Bots lösen Standardfälle – 35% weniger Tickets."},
+          {"title": "ERP & CRM Integration", "copy": "Automatisierte Bestellungen, wöchentliche Reports, Null Doppel-Erfassung."}
+        ]
+      },
+      "tech": {
+        "title": "Tech-Stack & Tools",
+        "subtitle": "Wir kombinieren bewährte Plattformen mit modernen Frameworks.",
+        "tabs": {"web": "Web", "automation": "Automation", "data": "Data & Integrationen"}
+      },
+      "testimonials": {
+        "title": "Kundenstimmen",
+        "subtitle": "Wir liefern Ergebnisse, keine Ausreden.",
+        "items": [
+          {"quote": "„Digital Solutions hat unseren B2B-Shop in 5 Wochen neu aufgebaut. Conversion +52%.", "author": "Leitung Digital, Industrie AG"},
+          {"quote": "„Support-Automatisierungen sparen uns jede Woche 40 Stunden. Tickets werden automatisch priorisiert.", "author": "Head of Operations, ServicePlus"},
+          {"quote": "„Integration ERP & CRM ohne Downtime. Datenqualität +100%.", "author": "CIO, Logistics Corp"}
+        ]
+      },
+      "pricing": {
+        "title": "Pakete & Fixpreise",
+        "subtitle": "Transparente Einstiegspakete, individuell erweiterbar.",
+        "items": [
+          {"title": "Website Basic", "price": "ab CHF 2’500", "features": ["Landingpage oder Microsite", "SEO-Basis, Tracking Setup", "1 Woche Support"]},
+          {"title": "Automation Sprint", "price": "ab CHF 4’500", "features": ["Analyse & Setup n8n/Zapier", "Bots & Workflows (bis 3)", "Schulung & Übergabe"]},
+          {"title": "Integration Plus", "price": "ab CHF 6’900", "features": ["Systemanalyse & Architektur", "Sichere API-Integrationen", "Monitoring & Dokumentation"]}
+        ],
+        "cta": "Projekt anfragen"
+      },
+      "faq": {
+        "title": "Häufige Fragen",
+        "subtitle": "Klare Antworten für schnelle Entscheidungen.",
+        "items": [
+          {"question": "Was kostet eine Website?", "answer": "Basic ab CHF 2’500, Business ab CHF 6’500, abhängig von Umfang/Integrationen."},
+          {"question": "Wie schnell geht ein Projekt?", "answer": "MVP in 2–4 Wochen möglich, je nach Input/Entscheidungen."},
+          {"question": "Automatisierungen – womit?", "answer": "n8n, Python/PHP-Skripte, Webhooks, APIs der Zielsysteme."},
+          {"question": "Arbeitet ihr mit bestehenden Teams?", "answer": "Ja, wir arbeiten eng mit internen IT- und Business-Teams zusammen."},
+          {"question": "Wie startet ein Projekt?", "answer": "Kick-off Workshop, Scope-Definition, Angebot mit Fixpreis-Komponenten."},
+          {"question": "Wie sieht Support aus?", "answer": "SLA-basiert, Monitoring, priorisierte Eskalation via Slack/Teams."}
+        ]
+      },
+      "cta": {
+        "title": "Bereit für weniger Klickarbeit?",
+        "subtitle": "Wir zeigen in 30 Minuten, welche Automatisierung morgen startet.",
+        "button": "Projekt anfragen"
+      },
+      "footer": {
+        "copy": "Digitale Lösungen aus Zürich. Automatisierung, Integrationen, Web.",
+        "contact": "Kontakt",
+        "address": "Limmatquai 1, 8001 Zürich",
+        "legal": "Rechtliches",
+        "imprint": "Impressum",
+        "privacy": "Datenschutz",
+        "sitemap": "Sitemap"
+      }
+    },
+    "en": {
+      "nav": {"home": "Home", "services": "Services", "work": "Work", "about": "About", "contact": "Contact", "cta": "Request project"},
+      "hero": {
+        "tagline": "IT solutions that save work.",
+        "title": "We digitise, automate and build websites that convert.",
+        "subtitle": "For SMEs and enterprise: measurably faster, less manual, scalable.",
+        "primaryCta": "Free discovery call",
+        "secondaryCta": "View services",
+        "bullets": [
+          "30–60% less manual clicks",
+          "Fast delivery, fixed pricing",
+          "Support that solves real issues"
+        ]
+      },
+      "trust": {"title": "Trusted by industry leaders:"},
+      "services": {
+        "title": "Services that deliver",
+        "intro": "We build, automate and connect so teams can do more.",
+        "link": "View all services",
+        "items": {
+          "web": {"title": "Websites & web apps", "copy": "Conversion-driven pages, clean codebase, fast loading."},
+          "automation": {"title": "Automate processes", "copy": "Eliminate repetitive tasks: bots, workflows, n8n/Zapier, scripts."},
+          "integration": {"title": "Integrations & data", "copy": "Connect APIs, sync systems, automate reports."},
+          "care": {"title": "Hosting & care", "copy": "Updates, monitoring, backups – no excuses."}
+        }
+      },
+      "process": {
+        "title": "How we work",
+        "intro": "Transparent steps from kick-off to operations.",
+        "steps": [
+          {"title": "Discover", "copy": "Status quo, goals, stakeholders. We listen."},
+          {"title": "Concept", "copy": "Architecture, UX flows, automation plan."},
+          {"title": "Prototype", "copy": "Clickable proof for fast feedback."},
+          {"title": "Build", "copy": "Iterative, test-driven, clear communication."},
+          {"title": "Operate", "copy": "Monitoring, optimisation, ongoing automation."}
+        ]
+      },
+      "metrics": {
+        "title": "Measurable impact",
+        "subtitle": "Typical outcomes after three months.",
+        "items": [
+          {"value": "40%", "label": "less manual effort"},
+          {"value": "&lt;300ms", "label": "Time to interactive"},
+          {"value": "+30", "label": "Net promoter score"}
+        ]
+      },
+      "cases": {
+        "title": "Selected work",
+        "subtitle": "Three examples of projects we kept on track.",
+        "link": "See all work",
+        "items": [
+          {"title": "B2B SaaS website relaunch", "copy": "+45% conversions after new messaging, headless CMS, PageSpeed 98."},
+          {"title": "Support automation", "copy": "Slack bots triage tickets – 35% fewer cases for the team."},
+          {"title": "ERP & CRM integration", "copy": "Automated orders, weekly reports, zero double entry."}
+        ]
+      },
+      "tech": {
+        "title": "Tech stack & tools",
+        "subtitle": "We combine proven platforms with modern frameworks.",
+        "tabs": {"web": "Web", "automation": "Automation", "data": "Data & integrations"}
+      },
+      "testimonials": {
+        "title": "Client feedback",
+        "subtitle": "We deliver outcomes, not excuses.",
+        "items": [
+          {"quote": "“Digital Solutions rebuilt our B2B store in 5 weeks. Conversion +52%.", "author": "Digital Lead, Industry AG"},
+          {"quote": "“Automation saves us 40 hours weekly. Tickets are triaged automatically.", "author": "Head of Operations, ServicePlus"},
+          {"quote": "“ERP & CRM integration without downtime. Data quality +100%.", "author": "CIO, Logistics Corp"}
+        ]
+      },
+      "pricing": {
+        "title": "Packages & pricing",
+        "subtitle": "Transparent starter bundles, fully customisable.",
+        "items": [
+          {"title": "Website basic", "price": "from CHF 2,500", "features": ["Landing page or microsite", "SEO essentials, tracking setup", "1 week support"]},
+          {"title": "Automation sprint", "price": "from CHF 4,500", "features": ["Discovery & setup n8n/Zapier", "Bots & workflows (up to 3)", "Training & handover"]},
+          {"title": "Integration plus", "price": "from CHF 6,900", "features": ["System analysis & architecture", "Secure API integrations", "Monitoring & documentation"]}
+        ],
+        "cta": "Request project"
+      },
+      "faq": {
+        "title": "FAQ",
+        "subtitle": "Clear answers for quick decisions.",
+        "items": [
+          {"question": "What does a website cost?", "answer": "Basic from CHF 2,500, Business from CHF 6,500 – scope dependent."},
+          {"question": "How fast can a project start?", "answer": "MVP in 2–4 weeks depending on input and approvals."},
+          {"question": "Automation – with which tools?", "answer": "n8n, Python/PHP scripts, webhooks, target system APIs."},
+          {"question": "Do you collaborate with internal teams?", "answer": "Yes, we work closely with IT and business stakeholders."},
+          {"question": "How does a project kick off?", "answer": "Kick-off workshop, scope definition, fixed-price proposal."},
+          {"question": "What does support look like?", "answer": "SLA-based, monitoring, prioritised escalation via Slack/Teams."}
+        ]
+      },
+      "cta": {
+        "title": "Ready to cut the busywork?",
+        "subtitle": "In 30 minutes we show the automation that launches tomorrow.",
+        "button": "Request project"
+      },
+      "footer": {
+        "copy": "Digital solutions from Zurich. Automation, integrations, web.",
+        "contact": "Contact",
+        "address": "Limmatquai 1, 8001 Zurich",
+        "legal": "Legal",
+        "imprint": "Imprint",
+        "privacy": "Privacy",
+        "sitemap": "Sitemap"
+      }
+    }
+  }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76A2z02tPqdjfq6YhF8dO9uMb4vEw3rjEPhC0RTwEJq1z1jEr2yZp5G5WLa3E" crossorigin="anonymous" defer></script>
+  <script type="module" src="/assets/js/main.js"></script>
+</body>
+</html>
