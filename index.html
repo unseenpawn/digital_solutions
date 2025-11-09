@@ -16,12 +16,12 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Digital Solutions – IT-Lösungen, die Arbeit sparen">
   <meta name="twitter:description" content="Wir bauen Webseiten, automatisieren Workflows und liefern messbare Ergebnisse.">
-  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="manifest" href="manifest.webmanifest" data-asset-href="manifest.webmanifest">
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link rel="stylesheet" href="/assets/css/main.css">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="assets/css/main.css" data-asset-href="assets/css/main.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" data-asset-href="favicon.svg">
   <meta name="theme-color" content="#0b6efd">
   <script type="application/ld+json">
   {
@@ -87,8 +87,8 @@
   <header class="site-header shadow-sm">
     <nav class="navbar navbar-expand-lg" aria-label="Hauptnavigation">
       <div class="container-xl">
-        <a class="navbar-brand d-flex align-items-center" href="/">
-          <img src="/assets/img/logo.svg" alt="Digital Solutions Logo" width="36" height="36" loading="eager" decoding="async">
+        <a class="navbar-brand d-flex align-items-center" href="index.html" data-route="home">
+          <img src="assets/img/logo.svg" alt="Digital Solutions Logo" width="36" height="36" loading="eager" decoding="async" data-asset-src="assets/img/logo.svg">
           <span class="fw-semibold ms-2">Digital Solutions</span>
         </a>
         <button class="navbar-toggler" type="button" aria-controls="mainNav" aria-expanded="false" aria-label="Menü umschalten">
@@ -96,11 +96,11 @@
         </button>
         <div class="collapse navbar-collapse" id="mainNav">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
-            <li class="nav-item"><a class="nav-link active" href="/" data-i18n="nav.home">Start</a></li>
-            <li class="nav-item"><a class="nav-link" href="/leistungen.html" data-i18n="nav.services">Leistungen</a></li>
-            <li class="nav-item"><a class="nav-link" href="/referenzen.html" data-i18n="nav.work">Referenzen</a></li>
-            <li class="nav-item"><a class="nav-link" href="/ueber-uns.html" data-i18n="nav.about">Über uns</a></li>
-            <li class="nav-item"><a class="nav-link" href="/kontakt.html" data-i18n="nav.contact">Kontakt</a></li>
+            <li class="nav-item"><a class="nav-link active" href="index.html" data-route="home" data-i18n="nav.home">Start</a></li>
+            <li class="nav-item"><a class="nav-link" href="leistungen.html" data-route="services" data-i18n="nav.services">Leistungen</a></li>
+            <li class="nav-item"><a class="nav-link" href="referenzen.html" data-route="work" data-i18n="nav.work">Referenzen</a></li>
+            <li class="nav-item"><a class="nav-link" href="ueber-uns.html" data-route="about" data-i18n="nav.about">Über uns</a></li>
+            <li class="nav-item"><a class="nav-link" href="kontakt.html" data-route="contact" data-i18n="nav.contact">Kontakt</a></li>
             <li class="nav-item ms-lg-3"><button class="btn btn-accent" type="button" data-open-contact data-cta-source="nav" data-i18n="nav.cta">Projekt anfragen</button></li>
             <li class="nav-item ms-lg-3 position-relative">
               <button class="btn btn-outline btn-sm" type="button" data-lang-toggle aria-haspopup="listbox" aria-expanded="false">DE</button>
@@ -135,7 +135,7 @@
           </div>
           <div class="col-lg-5">
             <div class="hero-visual" role="presentation" aria-hidden="true">
-              <img src="/assets/img/hero-illustration.svg" alt="" width="520" height="360" loading="eager" decoding="async">
+              <img src="assets/img/hero-illustration.svg" alt="" width="520" height="360" loading="eager" decoding="async">
             </div>
           </div>
         </div>
@@ -198,10 +198,10 @@
           </div>
           <div class="col-md-9">
             <div class="d-flex flex-wrap gap-4 justify-content-around" aria-hidden="true">
-              <img src="/assets/img/logo-client-1.svg" width="120" height="36" alt="Swiss Manufacturing" loading="lazy" decoding="async">
-              <img src="/assets/img/logo-client-2.svg" width="120" height="36" alt="FinTech AG" loading="lazy" decoding="async">
-              <img src="/assets/img/logo-client-3.svg" width="120" height="36" alt="Healthcare Suisse" loading="lazy" decoding="async">
-              <img src="/assets/img/logo-client-4.svg" width="120" height="36" alt="Retail Group" loading="lazy" decoding="async">
+              <img src="assets/img/logo-client-1.svg" width="120" height="36" alt="Swiss Manufacturing" loading="lazy" decoding="async">
+              <img src="assets/img/logo-client-2.svg" width="120" height="36" alt="FinTech AG" loading="lazy" decoding="async">
+              <img src="assets/img/logo-client-3.svg" width="120" height="36" alt="Healthcare Suisse" loading="lazy" decoding="async">
+              <img src="assets/img/logo-client-4.svg" width="120" height="36" alt="Retail Group" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
@@ -215,7 +215,7 @@
             <h2 class="h1" data-i18n="services.title">Leistungen, die wirken</h2>
             <p class="mb-0" data-i18n="services.intro">Wir bauen, automatisieren und verbinden – damit Teams pro Woche 30–60% weniger Klickarbeit haben.</p>
           </div>
-          <a class="btn btn-outline mt-3 mt-lg-0" href="/leistungen.html" data-i18n="services.link">Alle Leistungen im Detail</a>
+          <a class="btn btn-outline mt-3 mt-lg-0" href="leistungen.html" data-i18n="services.link">Alle Leistungen im Detail</a>
         </div>
         <div class="row g-4">
           <div class="col-md-6 col-lg-3">
@@ -342,7 +342,7 @@
                 <dt data-i18n="cases.items.0.result">Ergebnis</dt>
                 <dd data-i18n="cases.items.0.resultCopy">-42% manuelle Admin-Zeit nach 8 Wochen.</dd>
               </dl>
-              <a href="/referenzen.html#case-recruiting" class="stretched-link" data-i18n="cases.link">Zur Fallstudie</a>
+              <a href="referenzen.html#case-recruiting" class="stretched-link" data-i18n="cases.link">Zur Fallstudie</a>
             </article>
           </div>
           <div class="col-md-4">
@@ -356,7 +356,7 @@
                 <dt data-i18n="cases.items.1.result">Ergebnis</dt>
                 <dd data-i18n="cases.items.1.resultCopy">+38% Anfragen in 60 Tagen, TTFB &lt;200ms.</dd>
               </dl>
-              <a href="/referenzen.html#case-kmu" class="stretched-link" data-i18n="cases.link">Zur Fallstudie</a>
+              <a href="referenzen.html#case-kmu" class="stretched-link" data-i18n="cases.link">Zur Fallstudie</a>
             </article>
           </div>
           <div class="col-md-4">
@@ -370,7 +370,7 @@
                 <dt data-i18n="cases.items.2.result">Ergebnis</dt>
                 <dd data-i18n="cases.items.2.resultCopy">-25% First-Response-Time, 92% SLA-Hit-Rate.</dd>
               </dl>
-              <a href="/referenzen.html#case-support" class="stretched-link" data-i18n="cases.link">Zur Fallstudie</a>
+              <a href="referenzen.html#case-support" class="stretched-link" data-i18n="cases.link">Zur Fallstudie</a>
             </article>
           </div>
         </div>
@@ -391,43 +391,43 @@
           </div>
           <div id="tech-web" class="tech-panel" role="tabpanel" aria-labelledby="tab-web" data-tech-panel="web">
             <figure>
-              <img src="/assets/img/logo-php.svg" width="80" height="40" alt="PHP" loading="lazy" decoding="async">
+              <img src="assets/img/logo-php.svg" width="80" height="40" alt="PHP" loading="lazy" decoding="async">
               <figcaption>PHP 8.x</figcaption>
             </figure>
             <figure>
-              <img src="/assets/img/logo-bootstrap.svg" width="80" height="40" alt="Bootstrap" loading="lazy" decoding="async">
+              <img src="assets/img/logo-bootstrap.svg" width="80" height="40" alt="Bootstrap" loading="lazy" decoding="async">
               <figcaption>Bootstrap 5</figcaption>
             </figure>
             <figure>
-              <img src="/assets/img/logo-nextjs.svg" width="80" height="40" alt="Next.js" loading="lazy" decoding="async">
+              <img src="assets/img/logo-nextjs.svg" width="80" height="40" alt="Next.js" loading="lazy" decoding="async">
               <figcaption>Headless Frontends</figcaption>
             </figure>
           </div>
           <div id="tech-automation" class="tech-panel" role="tabpanel" aria-labelledby="tab-automation" data-tech-panel="automation" hidden>
             <figure>
-              <img src="/assets/img/logo-n8n.svg" width="80" height="40" alt="n8n" loading="lazy" decoding="async">
+              <img src="assets/img/logo-n8n.svg" width="80" height="40" alt="n8n" loading="lazy" decoding="async">
               <figcaption>n8n Workflows</figcaption>
             </figure>
             <figure>
-              <img src="/assets/img/logo-zapier.svg" width="80" height="40" alt="Zapier" loading="lazy" decoding="async">
+              <img src="assets/img/logo-zapier.svg" width="80" height="40" alt="Zapier" loading="lazy" decoding="async">
               <figcaption>Zapier Enterprise</figcaption>
             </figure>
             <figure>
-              <img src="/assets/img/logo-python.svg" width="80" height="40" alt="Python" loading="lazy" decoding="async">
+              <img src="assets/img/logo-python.svg" width="80" height="40" alt="Python" loading="lazy" decoding="async">
               <figcaption>Python Bots</figcaption>
             </figure>
           </div>
           <div id="tech-data" class="tech-panel" role="tabpanel" aria-labelledby="tab-data" data-tech-panel="data" hidden>
             <figure>
-              <img src="/assets/img/logo-mysql.svg" width="80" height="40" alt="MySQL" loading="lazy" decoding="async">
+              <img src="assets/img/logo-mysql.svg" width="80" height="40" alt="MySQL" loading="lazy" decoding="async">
               <figcaption>MySQL / MariaDB</figcaption>
             </figure>
             <figure>
-              <img src="/assets/img/logo-mulesoft.svg" width="80" height="40" alt="Mulesoft" loading="lazy" decoding="async">
+              <img src="assets/img/logo-mulesoft.svg" width="80" height="40" alt="Mulesoft" loading="lazy" decoding="async">
               <figcaption>API-Layer &amp; iPaaS</figcaption>
             </figure>
             <figure>
-              <img src="/assets/img/logo-snowflake.svg" width="80" height="40" alt="Snowflake" loading="lazy" decoding="async">
+              <img src="assets/img/logo-snowflake.svg" width="80" height="40" alt="Snowflake" loading="lazy" decoding="async">
               <figcaption>Data Warehouse</figcaption>
             </figure>
           </div>
@@ -570,16 +570,16 @@
         <div>
           <h4 class="h6 text-uppercase" data-i18n="footer.contact">Kontakt</h4>
           <ul class="list-unstyled mb-0">
-            <li><a href="/kontakt.html" data-i18n="footer.cta">Projekt anfragen</a></li>
+            <li><a href="kontakt.html" data-route="contact" data-i18n="footer.cta">Projekt anfragen</a></li>
             <li><a href="https://www.linkedin.com/company/digital-solutions" rel="noopener" target="_blank">LinkedIn</a></li>
           </ul>
         </div>
         <div>
           <h4 class="h6 text-uppercase" data-i18n="footer.legal">Rechtliches</h4>
           <ul class="list-unstyled mb-0">
-            <li><a href="/impressum.html" data-i18n="footer.imprint">Impressum</a></li>
-            <li><a href="/datenschutz.html" data-i18n="footer.privacy">Datenschutz</a></li>
-            <li><a href="/sitemap.xml" data-i18n="footer.sitemap">Sitemap</a></li>
+            <li><a href="impressum.html" data-route="imprint" data-i18n="footer.imprint">Impressum</a></li>
+            <li><a href="datenschutz.html" data-route="privacy" data-i18n="footer.privacy">Datenschutz</a></li>
+            <li><a href="sitemap.xml" data-route="sitemap" data-i18n="footer.sitemap">Sitemap</a></li>
           </ul>
         </div>
       </div>
@@ -594,7 +594,7 @@
       <button class="contact-modal__close" type="button" aria-label="Schließen" data-close-contact>&times;</button>
       <h2 class="h3 mb-3" id="contact-modal-title" data-i18n="modal.title">Kurz Projekt skizzieren</h2>
       <p class="text-body-secondary" data-i18n="modal.intro">Teilen Sie kurz Ziel, Budget und Zeithorizont – wir melden uns in maximal 24 Stunden.</p>
-      <form class="mt-3" action="/kontakt.php" method="post" data-contact-form data-context="modal">
+      <form class="mt-3" action="kontakt.php" method="post" data-contact-form data-context="modal" data-endpoint="contact">
         <div class="contact-form-grid">
           <div>
             <label class="form-label" for="modal-name" data-i18n="form.name">Name *</label>
@@ -660,7 +660,7 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
-  <script type="module" src="/assets/js/main.js" defer></script>
+  <script type="module" src="assets/js/main.js" defer></script>
   <script type="application/json" id="translations">
   {
     "de": {

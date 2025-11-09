@@ -16,12 +16,12 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Referenzen – Digital Solutions">
   <meta name="twitter:description" content="Web, Automatisierung und Integrationen mit klaren KPIs.">
-  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="manifest" href="manifest.webmanifest" data-asset-href="manifest.webmanifest">
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link rel="stylesheet" href="/assets/css/main.css">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="assets/css/main.css" data-asset-href="assets/css/main.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" data-asset-href="favicon.svg">
   <meta name="theme-color" content="#0b6efd">
   <script type="application/ld+json">
   {
@@ -39,8 +39,8 @@
   <header class="site-header shadow-sm">
     <nav class="navbar navbar-expand-lg" aria-label="Hauptnavigation">
       <div class="container-xl">
-        <a class="navbar-brand d-flex align-items-center" href="/">
-          <img src="/assets/img/logo.svg" alt="Digital Solutions Logo" width="36" height="36" loading="eager" decoding="async">
+        <a class="navbar-brand d-flex align-items-center" href="index.html" data-route="home">
+          <img src="assets/img/logo.svg" alt="Digital Solutions Logo" width="36" height="36" loading="eager" decoding="async" data-asset-src="assets/img/logo.svg">
           <span class="fw-semibold ms-2">Digital Solutions</span>
         </a>
         <button class="navbar-toggler" type="button" aria-controls="mainNav" aria-expanded="false" aria-label="Menü umschalten">
@@ -48,11 +48,11 @@
         </button>
         <div class="collapse navbar-collapse" id="mainNav">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
-            <li class="nav-item"><a class="nav-link" href="/" data-i18n="nav.home">Start</a></li>
-            <li class="nav-item"><a class="nav-link" href="/leistungen.html" data-i18n="nav.services">Leistungen</a></li>
-            <li class="nav-item"><a class="nav-link active" href="/referenzen.html" data-i18n="nav.work">Referenzen</a></li>
-            <li class="nav-item"><a class="nav-link" href="/ueber-uns.html" data-i18n="nav.about">Über uns</a></li>
-            <li class="nav-item"><a class="nav-link" href="/kontakt.html" data-i18n="nav.contact">Kontakt</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html" data-route="home" data-i18n="nav.home">Start</a></li>
+            <li class="nav-item"><a class="nav-link" href="leistungen.html" data-route="services" data-i18n="nav.services">Leistungen</a></li>
+            <li class="nav-item"><a class="nav-link active" href="referenzen.html" data-route="work" data-i18n="nav.work">Referenzen</a></li>
+            <li class="nav-item"><a class="nav-link" href="ueber-uns.html" data-route="about" data-i18n="nav.about">Über uns</a></li>
+            <li class="nav-item"><a class="nav-link" href="kontakt.html" data-route="contact" data-i18n="nav.contact">Kontakt</a></li>
             <li class="nav-item ms-lg-3"><button class="btn btn-accent" type="button" data-open-contact data-cta-source="nav" data-i18n="nav.cta">Projekt anfragen</button></li>
             <li class="nav-item ms-lg-3 position-relative">
               <button class="btn btn-outline btn-sm" type="button" data-lang-toggle aria-haspopup="listbox" aria-expanded="false">DE</button>
@@ -82,7 +82,7 @@
           </div>
           <div class="col-lg-5">
             <div class="hero-visual" role="presentation" aria-hidden="true">
-              <img src="/assets/img/case-automation.svg" alt="Case Charts" width="480" height="320" loading="lazy" decoding="async">
+              <img src="assets/img/case-automation.svg" alt="Case Charts" width="480" height="320" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
@@ -130,7 +130,7 @@
               <h3 class="h3" data-i18n="cases.items.0.title">Recruiting-Firma: Automatisierung</h3>
               <span class="badge bg-accent-soft text-accent" data-i18n="cases.items.0.kpi">-42% Admin-Aufwand</span>
             </header>
-            <img src="/assets/img/case-rpa.svg" alt="Recruiting Automatisierung" width="360" height="220" loading="lazy" decoding="async">
+            <img src="assets/img/case-rpa.svg" alt="Recruiting Automatisierung" width="360" height="220" loading="lazy" decoding="async">
             <p class="mt-3" data-i18n="cases.items.0.summary">LinkedIn-Leads, CRM und Bewerber-Tool waren isoliert. Das Team verlor 18 Stunden pro Woche an Admin-Aufgaben.</p>
             <dl>
               <dt data-i18n="cases.items.0.problem">Problem</dt>
@@ -145,14 +145,14 @@
               <li data-i18n-item>Zapier</li>
               <li data-i18n-item>HubSpot</li>
             </ul>
-            <a class="mt-3" href="/kontakt.html" data-i18n="cases.items.0.cta">Ähnliches Projekt besprechen</a>
+            <a class="mt-3" href="kontakt.html" data-i18n="cases.items.0.cta">Ähnliches Projekt besprechen</a>
           </article>
           <article id="case-kmu" class="case-card" data-case-item data-tags="web" data-i18n-scope="cases.items.1">
             <header class="d-flex justify-content-between align-items-start mb-3">
               <h3 class="h3" data-i18n="cases.items.1.title">KMU-Website Relaunch</h3>
               <span class="badge bg-accent-soft text-accent" data-i18n="cases.items.1.kpi">+38% Leads</span>
             </header>
-            <img src="/assets/img/case-web.svg" alt="KMU Website" width="360" height="220" loading="lazy" decoding="async">
+            <img src="assets/img/case-web.svg" alt="KMU Website" width="360" height="220" loading="lazy" decoding="async">
             <p class="mt-3" data-i18n="cases.items.1.summary">Veraltete Seite mit 8s LCP und fehlender Tracking-Struktur bremste Vertrieb und Marketing.</p>
             <dl>
               <dt data-i18n="cases.items.1.problem">Problem</dt>
@@ -167,14 +167,14 @@
               <li data-i18n-item>Storyblok</li>
               <li data-i18n-item>GA4</li>
             </ul>
-            <a class="mt-3" href="/leistungen.html#packages" data-i18n="cases.items.1.cta">Webpakete ansehen</a>
+            <a class="mt-3" href="leistungen.html#packages" data-i18n="cases.items.1.cta">Webpakete ansehen</a>
           </article>
           <article id="case-support" class="case-card" data-case-item data-tags="automation integration" data-i18n-scope="cases.items.2">
             <header class="d-flex justify-content-between align-items-start mb-3">
               <h3 class="h3" data-i18n="cases.items.2.title">Support-Automation</h3>
               <span class="badge bg-accent-soft text-accent" data-i18n="cases.items.2.kpi">-25% FRT</span>
             </header>
-            <img src="/assets/img/case-support.svg" alt="Support Automation" width="360" height="220" loading="lazy" decoding="async">
+            <img src="assets/img/case-support.svg" alt="Support Automation" width="360" height="220" loading="lazy" decoding="async">
             <p class="mt-3" data-i18n="cases.items.2.summary">Tickets wurden manuell triagiert, SLAs wurden häufig verfehlt, Reporting fehlte.</p>
             <dl>
               <dt data-i18n="cases.items.2.problem">Problem</dt>
@@ -189,7 +189,7 @@
               <li data-i18n-item>Python</li>
               <li data-i18n-item>Snowflake</li>
             </ul>
-            <a class="mt-3" href="/leistungen.html" data-i18n="cases.items.2.cta">Automation-Angebot sichern</a>
+            <a class="mt-3" href="leistungen.html" data-i18n="cases.items.2.cta">Automation-Angebot sichern</a>
           </article>
         </div>
       </div>
@@ -224,16 +224,16 @@
         <div>
           <h4 class="h6 text-uppercase" data-i18n="footer.contact">Kontakt</h4>
           <ul class="list-unstyled mb-0">
-            <li><a href="/kontakt.html" data-i18n="footer.cta">Projekt anfragen</a></li>
+            <li><a href="kontakt.html" data-route="contact" data-i18n="footer.cta">Projekt anfragen</a></li>
             <li><a href="https://www.linkedin.com/company/digital-solutions" rel="noopener" target="_blank">LinkedIn</a></li>
           </ul>
         </div>
         <div>
           <h4 class="h6 text-uppercase" data-i18n="footer.legal">Rechtliches</h4>
           <ul class="list-unstyled mb-0">
-            <li><a href="/impressum.html" data-i18n="footer.imprint">Impressum</a></li>
-            <li><a href="/datenschutz.html" data-i18n="footer.privacy">Datenschutz</a></li>
-            <li><a href="/sitemap.xml" data-i18n="footer.sitemap">Sitemap</a></li>
+            <li><a href="impressum.html" data-route="imprint" data-i18n="footer.imprint">Impressum</a></li>
+            <li><a href="datenschutz.html" data-route="privacy" data-i18n="footer.privacy">Datenschutz</a></li>
+            <li><a href="sitemap.xml" data-route="sitemap" data-i18n="footer.sitemap">Sitemap</a></li>
           </ul>
         </div>
       </div>
@@ -248,7 +248,7 @@
       <button class="contact-modal__close" type="button" aria-label="Schließen" data-close-contact>&times;</button>
       <h2 class="h3 mb-3" id="contact-modal-title" data-i18n="modal.title">Kurz Projekt skizzieren</h2>
       <p class="text-body-secondary" data-i18n="modal.intro">Teilen Sie kurz Ziel, Budget und Zeithorizont – wir melden uns in maximal 24 Stunden.</p>
-      <form class="mt-3" action="/kontakt.php" method="post" data-contact-form data-context="modal">
+      <form class="mt-3" action="kontakt.php" method="post" data-contact-form data-context="modal" data-endpoint="contact">
         <div class="contact-form-grid">
           <div>
             <label class="form-label" for="modal-name" data-i18n="form.name">Name *</label>
@@ -314,7 +314,7 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
-  <script type="module" src="/assets/js/main.js" defer></script>
+  <script type="module" src="assets/js/main.js" defer></script>
   <script type="application/json" id="translations">
   {
     "de": {
