@@ -1,3 +1,5 @@
+import { routes, endpoints, buildPath } from './config.js';
+
 const prefersReducedMotionMedia = window.matchMedia('(prefers-reduced-motion: reduce)');
 let prefersReducedMotion = prefersReducedMotionMedia.matches;
 prefersReducedMotionMedia.addEventListener('change', (event) => {
@@ -110,6 +112,40 @@ function smoothScroll(event) {
 document.querySelectorAll('[data-scroll]').forEach((link) => {
   link.addEventListener('click', smoothScroll);
 });
+
+function applyRoutingConfig() {
+  document.querySelectorAll('[data-route]').forEach((el) => {
+    const key = el.dataset.route;
+    if (!key) return;
+    const target = routes[key];
+    if (target) {
+      el.setAttribute('href', target);
+    }
+  });
+
+  document.querySelectorAll('[data-endpoint]').forEach((form) => {
+    const key = form.dataset.endpoint;
+    if (!key) return;
+    const target = endpoints[key];
+    if (target) {
+      form.setAttribute('action', target);
+    }
+  });
+
+  document.querySelectorAll('[data-asset-src]').forEach((el) => {
+    const assetTarget = el.dataset.assetSrc;
+    if (!assetTarget) return;
+    el.setAttribute('src', buildPath(assetTarget));
+  });
+
+  document.querySelectorAll('[data-asset-href]').forEach((el) => {
+    const assetTarget = el.dataset.assetHref;
+    if (!assetTarget) return;
+    el.setAttribute('href', buildPath(assetTarget));
+  });
+}
+
+applyRoutingConfig();
 
 const langToggleBtn = document.querySelector('[data-lang-toggle]');
 const langMenu = document.querySelector('[data-lang-menu]');
@@ -404,7 +440,7 @@ contactForms.forEach((form) => {
     }
 
     try {
-      const response = await fetch(form.action || '/kontakt.php', {
+      const response = await fetch(form.getAttribute('action') || endpoints.contact, {
         method: 'POST',
         body: formData,
         headers: { Accept: 'application/json' },
