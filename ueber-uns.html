@@ -37,13 +37,13 @@
 <body>
   <a class="skip-link" href="#main" data-i18n="common.skip">Zum Inhalt springen</a>
   <header class="site-header shadow-sm">
-    <nav class="navbar navbar-expand-lg" aria-label="Hauptnavigation">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="Hauptnavigation">
       <div class="container-xl">
         <a class="navbar-brand d-flex align-items-center" href="index.html" data-route="home">
           <img src="assets/img/logo.svg" alt="Digital Solutions Logo" width="36" height="36" loading="eager" decoding="async" data-asset-src="assets/img/logo.svg">
           <span class="fw-semibold ms-2">Digital Solutions</span>
         </a>
-        <button class="navbar-toggler" type="button" aria-controls="mainNav" aria-expanded="false" aria-label="Menü umschalten">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Menü umschalten">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="mainNav">
@@ -61,6 +61,12 @@
                 <button type="button" role="option" data-lang-option="en">English</button>
               </div>
             </li>
+            <li class="nav-item ms-lg-2">
+              <button class="btn btn-outline btn-sm d-flex align-items-center gap-2" type="button" data-theme-toggle aria-pressed="false">
+                <span class="theme-toggle-icon" aria-hidden="true" data-theme-toggle-icon>☀</span>
+                <span data-theme-toggle-text>Hell</span>
+              </button>
+            </li>
           </ul>
         </div>
       </div>
@@ -71,7 +77,7 @@
     <section class="hero" data-i18n-scope="hero">
       <div class="container-xl">
         <div class="row align-items-center g-5">
-          <div class="col-lg-7">
+          <div class="col-lg-7 reveal">
             <span class="badge bg-light text-accent fw-semibold" data-i18n="hero.tagline">Mission</span>
             <h1 class="display-5 fw-bold mt-3" data-i18n="hero.title">Wir reduzieren Klickarbeit, damit Teams sich auf Wertschöpfung konzentrieren.</h1>
             <p class="lead text-body-secondary" data-i18n="hero.subtitle">Digital Solutions verbindet Produktdenken, Automatisierung und Integrationskompetenz – 100% aus Zürich.</p>
@@ -81,7 +87,7 @@
             </div>
           </div>
           <div class="col-lg-5">
-            <div class="hero-visual" role="presentation" aria-hidden="true">
+            <div class="hero-visual reveal" role="presentation" aria-hidden="true">
               <img src="assets/img/team-collab.svg" alt="Team Zusammenarbeit" width="480" height="320" loading="lazy" decoding="async">
             </div>
           </div>
@@ -105,7 +111,7 @@
             </ul>
           </div>
           <div class="col-lg-6">
-            <div class="card-elevated">
+            <div class="card-elevated reveal">
               <h3 class="h4 mb-3" data-i18n="mission.metricsTitle">Impact in Zahlen (FY2023)</h3>
               <ul class="list-unstyled mb-0" data-i18n-list="mission.metrics">
                 <li data-i18n-item><strong>21</strong> digitale Produkte gelauncht</li>
@@ -126,19 +132,19 @@
         </div>
         <div class="row g-4">
           <div class="col-md-4" data-i18n-scope="why.items.0">
-            <article class="card-elevated h-100">
+            <article class="card-elevated reveal h-100">
               <h3 class="h4" data-i18n="why.items.0.title">Hybrid Skills</h3>
               <p data-i18n="why.items.0.copy">UX, Dev und Automation in einem Team. 80% unserer Projekte laufen cross-funktional.</p>
             </article>
           </div>
           <div class="col-md-4" data-i18n-scope="why.items.1">
-            <article class="card-elevated h-100">
+            <article class="card-elevated reveal h-100">
               <h3 class="h4" data-i18n="why.items.1.title">Liefergeschwindigkeit</h3>
               <p data-i18n="why.items.1.copy">Von Kick-off bis MVP in 4 Wochen – dank modularer Komponenten und Automations-Blueprints.</p>
             </article>
           </div>
           <div class="col-md-4" data-i18n-scope="why.items.2">
-            <article class="card-elevated h-100">
+            <article class="card-elevated reveal h-100">
               <h3 class="h4" data-i18n="why.items.2.title">Messbare KPIs</h3>
               <p data-i18n="why.items.2.copy">Jedes Projekt erhält KPI-Dashboards und monatliche Review-Calls. Keine Übergabe ohne Scorecard.</p>
             </article>
@@ -155,7 +161,7 @@
         </div>
         <div class="row g-4">
           <div class="col-md-4" data-i18n-scope="team.members.0">
-            <article class="card-elevated h-100 text-center">
+            <article class="card-elevated reveal h-100 text-center">
               <img src="assets/img/case-brand.svg" alt="Portrait Platzhalter" width="200" height="160" loading="lazy" decoding="async">
               <h3 class="h4 mt-3" data-i18n="team.members.0.name">Nina Keller</h3>
               <p class="text-body-secondary" data-i18n="team.members.0.role">Lead Automation</p>
@@ -163,7 +169,7 @@
             </article>
           </div>
           <div class="col-md-4" data-i18n-scope="team.members.1">
-            <article class="card-elevated h-100 text-center">
+            <article class="card-elevated reveal h-100 text-center">
               <img src="assets/img/case-brand.svg" alt="Portrait Platzhalter" width="200" height="160" loading="lazy" decoding="async">
               <h3 class="h4 mt-3" data-i18n="team.members.1.name">Marc Steiner</h3>
               <p class="text-body-secondary" data-i18n="team.members.1.role">Head of Engineering</p>
@@ -171,7 +177,7 @@
             </article>
           </div>
           <div class="col-md-4" data-i18n-scope="team.members.2">
-            <article class="card-elevated h-100 text-center">
+            <article class="card-elevated reveal h-100 text-center">
               <img src="assets/img/case-brand.svg" alt="Portrait Platzhalter" width="200" height="160" loading="lazy" decoding="async">
               <h3 class="h4 mt-3" data-i18n="team.members.2.name">Laura Frei</h3>
               <p class="text-body-secondary" data-i18n="team.members.2.role">CX &amp; Data Lead</p>
@@ -190,25 +196,25 @@
         </div>
         <div class="row g-4">
           <div class="col-md-6" data-i18n-scope="values.items.0">
-            <article class="card-elevated h-100">
+            <article class="card-elevated reveal h-100">
               <h3 class="h4" data-i18n="values.items.0.title">Transparenz</h3>
               <p data-i18n="values.items.0.copy">Tägliche Statusupdates, geteilte Dashboards, offene Budget- und Aufwandstransparenz.</p>
             </article>
           </div>
           <div class="col-md-6" data-i18n-scope="values.items.1">
-            <article class="card-elevated h-100">
+            <article class="card-elevated reveal h-100">
               <h3 class="h4" data-i18n="values.items.1.title">Outcome statt Output</h3>
               <p data-i18n="values.items.1.copy">Wir messen Erfolg an Business-KPIs, nicht an Lines of Code oder Präsentationen.</p>
             </article>
           </div>
           <div class="col-md-6" data-i18n-scope="values.items.2">
-            <article class="card-elevated h-100">
+            <article class="card-elevated reveal h-100">
               <h3 class="h4" data-i18n="values.items.2.title">Security by Design</h3>
               <p data-i18n="values.items.2.copy">OWASP-Prinzipien, Least Privilege und regelmäßige Pen-Tests gehören zum Standard.</p>
             </article>
           </div>
           <div class="col-md-6" data-i18n-scope="values.items.3">
-            <article class="card-elevated h-100">
+            <article class="card-elevated reveal h-100">
               <h3 class="h4" data-i18n="values.items.3.title">Enablement</h3>
               <p data-i18n="values.items.3.copy">Wir befähigen Teams, selbst nachzusteuern – mit Dokumentation und Schulungen.</p>
             </article>
@@ -219,7 +225,7 @@
 
     <section class="py-5" data-i18n-scope="cta">
       <div class="container-xl">
-        <div class="cta-banner text-center text-lg-start">
+        <div class="cta-banner reveal text-center text-lg-start">
           <div class="row align-items-center g-4">
             <div class="col-lg-8">
               <h2 class="h1 mb-3" data-i18n="cta.title">Bereit für weniger Klickarbeit?</h2>

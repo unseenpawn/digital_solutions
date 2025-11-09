@@ -2,9 +2,8 @@ import { routes, endpoints, buildPath } from './config.js';
 
 const prefersReducedMotionMedia = window.matchMedia('(prefers-reduced-motion: reduce)');
 let prefersReducedMotion = prefersReducedMotionMedia.matches;
-prefersReducedMotionMedia.addEventListener('change', (event) => {
-  prefersReducedMotion = event.matches;
-});
+const revealTargets = [];
+let revealObserver = null;
 
 function logEvent(name, payload = {}) {
   if (window.console && typeof console.debug === 'function') {
@@ -25,6 +24,69 @@ if (translationsElement) {
 const localeStorageKey = 'ds-locale';
 const defaultLocale = document.documentElement.lang || 'de';
 let currentLocale = localStorage.getItem(localeStorageKey) || defaultLocale;
+
+const themeStorageKey = 'ds-theme';
+const defaultThemeName = 'light';
+const supportedThemes = new Set(['light', 'dark']);
+const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+const themeToggleButton = document.querySelector('[data-theme-toggle]');
+const themeToggleText = themeToggleButton?.querySelector('[data-theme-toggle-text]');
+const themeToggleIcon = themeToggleButton?.querySelector('[data-theme-toggle-icon]');
+const themeToggleLabels = {
+  de: { light: 'Hell', dark: 'Dunkel' },
+  en: { light: 'Light', dark: 'Dark' },
+};
+const themeToggleIcons = {
+  light: '☀',
+  dark: '☾',
+};
+let currentTheme = defaultThemeName;
+
+function updateThemeColorMeta(theme) {
+  if (themeColorMeta) {
+    const themeColor = theme === 'dark' ? '#0f1729' : '#0b6efd';
+    themeColorMeta.setAttribute('content', themeColor);
+  }
+  document.documentElement.style.colorScheme = theme === 'dark' ? 'dark' : 'light';
+}
+
+function updateThemeToggleState(theme) {
+  if (!themeToggleButton) return;
+  const labels = themeToggleLabels[currentLocale] || themeToggleLabels[defaultLocale] || themeToggleLabels.de;
+  themeToggleButton.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+  if (themeToggleText) {
+    themeToggleText.textContent = theme === 'dark' ? labels.dark : labels.light;
+  }
+  if (themeToggleIcon) {
+    themeToggleIcon.textContent = themeToggleIcons[theme] || themeToggleIcons.light;
+  }
+}
+
+function setTheme(theme, { save = true, emit = false } = {}) {
+  const normalized = supportedThemes.has(theme) ? theme : defaultThemeName;
+  document.documentElement.setAttribute('data-theme', normalized);
+  currentTheme = normalized;
+  if (save) {
+    localStorage.setItem(themeStorageKey, normalized);
+  }
+  updateThemeColorMeta(normalized);
+  updateThemeToggleState(normalized);
+  if (emit) {
+    logEvent('theme_change', { theme: normalized });
+  }
+}
+
+const storedTheme = localStorage.getItem(themeStorageKey);
+if (storedTheme && supportedThemes.has(storedTheme)) {
+  setTheme(storedTheme, { save: false });
+} else {
+  localStorage.setItem(themeStorageKey, defaultThemeName);
+  setTheme(defaultThemeName, { save: false });
+}
+
+themeToggleButton?.addEventListener('click', () => {
+  setTheme(currentTheme === 'dark' ? 'light' : 'dark', { emit: true });
+});
 
 function getValueFromPath(source, path) {
   return path.split('.').reduce((acc, key) => {
@@ -84,6 +146,7 @@ function applyTranslations(locale) {
     langToggle.textContent = locale.toUpperCase();
     langToggle.setAttribute('aria-expanded', 'false');
   }
+  updateThemeToggleState(currentTheme);
   logEvent('locale_change', { locale });
 }
 
@@ -231,13 +294,28 @@ if (navbarCollapse) {
     previousFocus = document.activeElement;
     document.addEventListener('keydown', trapFocus);
     collapseFocusElements[0]?.focus();
+    navbarToggler?.setAttribute('aria-expanded', 'true');
   });
 
   navbarCollapse.addEventListener('hidden.bs.collapse', () => {
     document.removeEventListener('keydown', trapFocus);
     collapseFocusElements = [];
     previousFocus?.focus();
+    navbarToggler?.setAttribute('aria-expanded', 'false');
   });
+}
+
+if (navbarCollapse && navbarToggler && (!navbarToggler.dataset.bsToggle || !navbarToggler.dataset.bsTarget)) {
+  const CollapseConstructor = window.bootstrap?.Collapse;
+  if (CollapseConstructor) {
+    const manualCollapse = new CollapseConstructor(navbarCollapse, { toggle: false });
+    navbarToggler.addEventListener('click', (event) => {
+      event.preventDefault();
+      const expanded = navbarToggler.getAttribute('aria-expanded') === 'true';
+      manualCollapse.toggle();
+      navbarToggler.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+    });
+  }
 }
 
 if (navbarToggler) {
@@ -246,7 +324,7 @@ if (navbarToggler) {
     if (!expanded) {
       logEvent('nav_open', {});
     }
-  });
+  }, { capture: true });
 }
 
 function markActiveCTAButtons() {
@@ -387,6 +465,58 @@ document.querySelectorAll('[data-open-contact]').forEach((trigger) => {
     openContactModal(source);
   });
 });
+
+function revealElement(el) {
+  el.classList.add('reveal--in');
+}
+
+function revealAllElements() {
+  revealTargets.forEach((el) => {
+    revealElement(el);
+  });
+}
+
+function setupRevealObserver() {
+  if (!revealTargets.length) {
+    return;
+  }
+  if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+    revealAllElements();
+    return;
+  }
+  revealObserver?.disconnect();
+  revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        revealElement(entry.target);
+        revealObserver?.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+  revealTargets.forEach((el) => {
+    if (!el.classList.contains('reveal--in')) {
+      revealObserver.observe(el);
+    }
+  });
+}
+
+function handleReducedMotionChange(event) {
+  prefersReducedMotion = event.matches;
+  if (prefersReducedMotion) {
+    revealObserver?.disconnect();
+    revealAllElements();
+  } else {
+    setupRevealObserver();
+  }
+}
+
+const initialRevealElements = document.querySelectorAll('.reveal');
+if (initialRevealElements.length) {
+  revealTargets.push(...initialRevealElements);
+  setupRevealObserver();
+}
+
+prefersReducedMotionMedia.addEventListener('change', handleReducedMotionChange);
 
 const qualifierForm = document.querySelector('[data-qualifier-form]');
 if (qualifierForm) {
