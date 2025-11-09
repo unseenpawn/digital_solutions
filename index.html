@@ -85,13 +85,13 @@
 <body>
   <a class="skip-link" href="#main" data-i18n="common.skip">Zum Inhalt springen</a>
   <header class="site-header shadow-sm">
-    <nav class="navbar navbar-expand-lg" aria-label="Hauptnavigation">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="Hauptnavigation">
       <div class="container-xl">
         <a class="navbar-brand d-flex align-items-center" href="index.html" data-route="home">
           <img src="assets/img/logo.svg" alt="Digital Solutions Logo" width="36" height="36" loading="eager" decoding="async" data-asset-src="assets/img/logo.svg">
           <span class="fw-semibold ms-2">Digital Solutions</span>
         </a>
-        <button class="navbar-toggler" type="button" aria-controls="mainNav" aria-expanded="false" aria-label="Menü umschalten">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Menü umschalten">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="mainNav">
@@ -109,6 +109,12 @@
                 <button type="button" role="option" data-lang-option="en">English</button>
               </div>
             </li>
+            <li class="nav-item ms-lg-2">
+              <button class="btn btn-outline btn-sm d-flex align-items-center gap-2" type="button" data-theme-toggle aria-pressed="false">
+                <span class="theme-toggle-icon" aria-hidden="true" data-theme-toggle-icon>☀</span>
+                <span data-theme-toggle-text>Hell</span>
+              </button>
+            </li>
           </ul>
         </div>
       </div>
@@ -119,7 +125,7 @@
     <section class="hero" id="hero" data-i18n-scope="hero">
       <div class="container-xl">
         <div class="row align-items-center g-5">
-          <div class="col-lg-7">
+          <div class="col-lg-7 reveal">
             <span class="badge bg-light text-accent fw-semibold" data-i18n="hero.tagline">IT-Lösungen, die Arbeit sparen.</span>
             <h1 class="display-5 fw-bold mt-3" data-i18n="hero.title">Wir digitalisieren, automatisieren und bauen Webseiten, die verkaufen.</h1>
             <p class="lead text-body-secondary" data-i18n="hero.subtitle">Für KMU und Enterprise: messbar schneller, weniger manuell, skalierbar.</p>
@@ -134,7 +140,7 @@
             </ul>
           </div>
           <div class="col-lg-5">
-            <div class="hero-visual" role="presentation" aria-hidden="true">
+            <div class="hero-visual reveal" role="presentation" aria-hidden="true">
               <img src="assets/img/hero-illustration.svg" alt="" width="520" height="360" loading="eager" decoding="async">
             </div>
           </div>
@@ -144,13 +150,13 @@
 
     <section class="py-4">
       <div class="container-xl">
-        <div class="project-qualifier" data-i18n-scope="qualifier">
+        <div class="project-qualifier reveal" data-i18n-scope="qualifier">
           <div class="row g-4 align-items-center">
             <div class="col-lg-5">
               <h2 class="h3 mb-3" data-i18n="qualifier.title">Projekt-Qualifier: Passt unser Team?</h2>
               <p class="mb-0 text-body-secondary" data-i18n="qualifier.copy">Wählen Sie Budget, Zeithorizont und Projekttyp. Wir bewerten innerhalb von 24h, ob ein Match besteht.</p>
             </div>
-            <div class="col-lg-7">
+            <div class="col-lg-7 reveal">
               <form class="row g-3" data-qualifier-form>
                 <div class="col-sm-4">
                   <label class="form-label" for="qualifier-budget" data-i18n="qualifier.budget">Budget</label>
@@ -219,7 +225,7 @@
         </div>
         <div class="row g-4">
           <div class="col-md-6 col-lg-3">
-            <article class="card-elevated" data-i18n-scope="services.items.web">
+            <article class="card-elevated reveal" data-i18n-scope="services.items.web">
               <h3 class="h4" data-i18n="services.items.web.title">Webseiten &amp; Web-Apps</h3>
               <p data-i18n="services.items.web.copy">Conversion-starke Seiten, saubere Code-Basis, Ladezeit &lt;1,5s.</p>
               <ul class="check-list" data-i18n-list="services.items.web.points">
@@ -230,7 +236,7 @@
             </article>
           </div>
           <div class="col-md-6 col-lg-3">
-            <article class="card-elevated" data-i18n-scope="services.items.automation">
+            <article class="card-elevated reveal" data-i18n-scope="services.items.automation">
               <h3 class="h4" data-i18n="services.items.automation.title">Prozesse automatisieren</h3>
               <p data-i18n="services.items.automation.copy">Wiederkehrende Aufgaben eliminieren: Bots, Workflows, n8n/Zapier.</p>
               <ul class="check-list" data-i18n-list="services.items.automation.points">
@@ -241,7 +247,7 @@
             </article>
           </div>
           <div class="col-md-6 col-lg-3">
-            <article class="card-elevated" data-i18n-scope="services.items.integration">
+            <article class="card-elevated reveal" data-i18n-scope="services.items.integration">
               <h3 class="h4" data-i18n="services.items.integration.title">Schnittstellen &amp; Daten</h3>
               <p data-i18n="services.items.integration.copy">APIs anbinden, Systeme synchronisieren, Reports automatisieren.</p>
               <ul class="check-list" data-i18n-list="services.items.integration.points">
@@ -252,7 +258,7 @@
             </article>
           </div>
           <div class="col-md-6 col-lg-3">
-            <article class="card-elevated" data-i18n-scope="services.items.care">
+            <article class="card-elevated reveal" data-i18n-scope="services.items.care">
               <h3 class="h4" data-i18n="services.items.care.title">Hosting &amp; Betreuung</h3>
               <p data-i18n="services.items.care.copy">Updates, Monitoring, Backups – ohne Ausreden.</p>
               <ul class="check-list" data-i18n-list="services.items.care.points">
@@ -273,7 +279,7 @@
             <h2 class="h1" data-i18n="process.title">So arbeiten wir</h2>
             <p data-i18n="process.intro">Strukturierter Ablauf mit klaren KPIs, damit Projekte planbar bleiben.</p>
           </div>
-          <div class="col-lg-7">
+          <div class="col-lg-7 reveal">
             <div class="timeline" data-i18n-list="process.steps">
               <div class="timeline-step" data-i18n-item>
                 <strong>Analyse</strong>
@@ -308,15 +314,15 @@
           <p data-i18n="metrics.subtitle">Nach 3 Monaten erzielen Kunden durchschnittlich folgende Werte.</p>
         </div>
         <div class="metrics" data-i18n-list="metrics.items">
-          <div class="metric" data-i18n-item>
+          <div class="metric reveal" data-i18n-item>
             <strong>40%</strong>
             <span>weniger manueller Aufwand</span>
           </div>
-          <div class="metric" data-i18n-item>
+          <div class="metric reveal" data-i18n-item>
             <strong>&lt;300ms</strong>
             <span>Time to Interactive</span>
           </div>
-          <div class="metric" data-i18n-item>
+          <div class="metric reveal" data-i18n-item>
             <strong>+30</strong>
             <span>NPS innerhalb 6 Monaten</span>
           </div>
@@ -332,7 +338,7 @@
         </div>
         <div class="row g-4">
           <div class="col-md-4">
-            <article class="card-elevated case-card">
+            <article class="card-elevated reveal case-card">
               <h3 class="h4" data-i18n="cases.items.0.title">Recruiting-Firma</h3>
               <dl>
                 <dt data-i18n="cases.items.0.problem">Problem</dt>
@@ -346,7 +352,7 @@
             </article>
           </div>
           <div class="col-md-4">
-            <article class="card-elevated case-card">
+            <article class="card-elevated reveal case-card">
               <h3 class="h4" data-i18n="cases.items.1.title">KMU-Website</h3>
               <dl>
                 <dt data-i18n="cases.items.1.problem">Problem</dt>
@@ -360,7 +366,7 @@
             </article>
           </div>
           <div class="col-md-4">
-            <article class="card-elevated case-card">
+            <article class="card-elevated reveal case-card">
               <h3 class="h4" data-i18n="cases.items.2.title">Support-Automation</h3>
               <dl>
                 <dt data-i18n="cases.items.2.problem">Problem</dt>
@@ -383,7 +389,7 @@
           <h2 class="h1" data-i18n="tech.title">Tech-Stack &amp; Integrationen</h2>
           <p data-i18n="tech.subtitle">Wir kombinieren stabile Plattformen mit Automatisierungs-Tools – ohne Lock-in.</p>
         </div>
-        <div class="tech-tabs">
+        <div class="tech-tabs reveal">
           <div class="tech-tablist" role="tablist" aria-label="Technologie-Auswahl" data-tech-tablist>
             <button type="button" role="tab" aria-selected="true" aria-controls="tech-web" id="tab-web" data-tech-tab="web" data-i18n="tech.tabs.web">Web</button>
             <button type="button" role="tab" aria-selected="false" aria-controls="tech-automation" id="tab-automation" data-tech-tab="automation" data-i18n="tech.tabs.automation">Automation</button>
@@ -472,7 +478,7 @@
           <p data-i18n="pricing.subtitle">Transparente Einstiegspakete, flexibel erweiterbar.</p>
         </div>
         <div class="pricing-grid" data-i18n-list="pricing.items">
-          <article class="card-elevated" data-i18n-item>
+          <article class="card-elevated reveal" data-i18n-item>
             <h3 class="h4">Website Kickstart</h3>
             <p class="h5 text-accent" data-i18n="pricing.items.0.price">ab CHF 2’500</p>
             <ul class="check-list" data-i18n-list="pricing.items.0.features">
@@ -481,7 +487,7 @@
               <li data-i18n-item>2 Feedback-Loops</li>
             </ul>
           </article>
-          <article class="card-elevated" data-i18n-item>
+          <article class="card-elevated reveal" data-i18n-item>
             <h3 class="h4">Automation Sprint</h3>
             <p class="h5 text-accent" data-i18n="pricing.items.1.price">ab CHF 4’500</p>
             <ul class="check-list" data-i18n-list="pricing.items.1.features">
@@ -490,7 +496,7 @@
               <li data-i18n-item>Training &amp; Übergabe</li>
             </ul>
           </article>
-          <article class="card-elevated" data-i18n-item>
+          <article class="card-elevated reveal" data-i18n-item>
             <h3 class="h4">Integration Plus</h3>
             <p class="h5 text-accent" data-i18n="pricing.items.2.price">ab CHF 6’900</p>
             <ul class="check-list" data-i18n-list="pricing.items.2.features">
@@ -543,7 +549,7 @@
 
     <section class="py-5" id="contact" data-i18n-scope="cta">
       <div class="container-xl">
-        <div class="cta-banner text-center text-lg-start">
+        <div class="cta-banner reveal text-center text-lg-start">
           <div class="row align-items-center g-4">
             <div class="col-lg-8">
               <h2 class="h1 mb-3" data-i18n="cta.title">Bereit für weniger Klickarbeit?</h2>

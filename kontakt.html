@@ -37,13 +37,13 @@
 <body>
   <a class="skip-link" href="#main" data-i18n="common.skip">Zum Inhalt springen</a>
   <header class="site-header shadow-sm">
-    <nav class="navbar navbar-expand-lg" aria-label="Hauptnavigation">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="Hauptnavigation">
       <div class="container-xl">
         <a class="navbar-brand d-flex align-items-center" href="index.html" data-route="home">
           <img src="assets/img/logo.svg" alt="Digital Solutions Logo" width="36" height="36" loading="eager" decoding="async" data-asset-src="assets/img/logo.svg">
           <span class="fw-semibold ms-2">Digital Solutions</span>
         </a>
-        <button class="navbar-toggler" type="button" aria-controls="mainNav" aria-expanded="false" aria-label="Menü umschalten">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Menü umschalten">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="mainNav">
@@ -61,6 +61,12 @@
                 <button type="button" role="option" data-lang-option="en">English</button>
               </div>
             </li>
+            <li class="nav-item ms-lg-2">
+              <button class="btn btn-outline btn-sm d-flex align-items-center gap-2" type="button" data-theme-toggle aria-pressed="false">
+                <span class="theme-toggle-icon" aria-hidden="true" data-theme-toggle-icon>☀</span>
+                <span data-theme-toggle-text>Hell</span>
+              </button>
+            </li>
           </ul>
         </div>
       </div>
@@ -71,7 +77,7 @@
     <section class="hero" data-i18n-scope="hero">
       <div class="container-xl">
         <div class="row align-items-center g-5">
-          <div class="col-lg-7">
+          <div class="col-lg-7 reveal">
             <span class="badge bg-light text-accent fw-semibold" data-i18n="hero.tagline">Briefing senden</span>
             <h1 class="display-5 fw-bold mt-3" data-i18n="hero.title">Kontakt &amp; Erstgespräch: Antwort innerhalb von 24 Stunden.</h1>
             <p class="lead text-body-secondary" data-i18n="hero.subtitle">Teilen Sie Ziel, Budget und Zeithorizont – wir prüfen Machbarkeit, Aufwand und Automatisierungspotenzial.</p>
@@ -81,7 +87,7 @@
             </div>
           </div>
           <div class="col-lg-5">
-            <div class="hero-visual" role="presentation" aria-hidden="true">
+            <div class="hero-visual reveal" role="presentation" aria-hidden="true">
               <img src="assets/img/case-portal.svg" alt="Kontakt" width="480" height="320" loading="lazy" decoding="async">
             </div>
           </div>
@@ -95,7 +101,7 @@
           <h2 class="h1" data-i18n="form.title">Projekt anfragen</h2>
           <p data-i18n="form.subtitle">Wir nutzen diese Angaben, um Aufwand einzuschätzen und ein Erstgespräch vorzubereiten.</p>
         </div>
-        <form class="card-elevated" action="kontakt.php" method="post" data-contact-form data-context="page" data-endpoint="contact" novalidate>
+        <form class="card-elevated reveal" action="kontakt.php" method="post" data-contact-form data-context="page" data-endpoint="contact" novalidate>
           <div class="contact-form-grid">
             <div>
               <label class="form-label" for="page-name" data-i18n="form.name">Name *</label>

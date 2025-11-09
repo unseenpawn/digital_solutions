@@ -8,18 +8,29 @@
   --neutral-600: #4a5568;
   --neutral-800: #1f2937;
   --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.08);
-  color-scheme: light dark;
+  color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  html:not([data-theme="light"]) {
     --neutral-100: #161b26;
     --neutral-200: #1d2330;
     --neutral-300: #2c3445;
     --neutral-600: #d0d5e2;
     --neutral-800: #f1f5f9;
     --shadow-soft: 0 18px 45px rgba(8, 15, 30, 0.3);
+    color-scheme: dark;
   }
+}
+
+html[data-theme="dark"] {
+  --neutral-100: #161b26;
+  --neutral-200: #1d2330;
+  --neutral-300: #2c3445;
+  --neutral-600: #d0d5e2;
+  --neutral-800: #f1f5f9;
+  --shadow-soft: 0 18px 45px rgba(8, 15, 30, 0.3);
+  color-scheme: dark;
 }
 
 * {
@@ -39,10 +50,15 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
-  body {
+  html:not([data-theme="light"]) body {
     background-color: #0f1729;
     color: var(--neutral-600);
   }
+}
+
+html[data-theme="dark"] body {
+  background-color: #0f1729;
+  color: var(--neutral-600);
 }
 
 .visually-hidden {
@@ -99,10 +115,31 @@ a:focus-visible {
 }
 
 @media (prefers-color-scheme: dark) {
-  .site-header {
+  html:not([data-theme="light"]) .site-header {
     background: rgba(17, 24, 39, 0.95);
     border-bottom-color: rgba(148, 163, 184, 0.3);
   }
+
+  html:not([data-theme="light"]) .navbar-light.bg-light {
+    background-color: rgba(17, 24, 39, 0.95) !important;
+  }
+
+  html:not([data-theme="light"]) .navbar-light .navbar-toggler-icon {
+    filter: invert(1) brightness(1.1);
+  }
+}
+
+html[data-theme="dark"] .site-header {
+  background: rgba(17, 24, 39, 0.95);
+  border-bottom-color: rgba(148, 163, 184, 0.3);
+}
+
+html[data-theme="dark"] .navbar-light.bg-light {
+  background-color: rgba(17, 24, 39, 0.95) !important;
+}
+
+html[data-theme="dark"] .navbar-light .navbar-toggler-icon {
+  filter: invert(1) brightness(1.1);
 }
 
 .navbar .nav-link {
@@ -115,6 +152,11 @@ a:focus-visible {
 .navbar .nav-link:focus-visible {
   background: var(--accent-soft);
   color: var(--accent);
+}
+
+.theme-toggle-icon {
+  font-size: 1rem;
+  line-height: 1;
 }
 
 .btn-accent {
@@ -151,10 +193,15 @@ a:focus-visible {
 }
 
 @media (prefers-color-scheme: dark) {
-  .btn-outline {
+  html:not([data-theme="light"]) .btn-outline {
     color: var(--neutral-600);
     border-color: var(--neutral-300);
   }
+}
+
+html[data-theme="dark"] .btn-outline {
+  color: var(--neutral-600);
+  border-color: var(--neutral-300);
 }
 
 .section-title {
@@ -193,10 +240,15 @@ a:focus-visible {
 }
 
 @media (prefers-color-scheme: dark) {
-  .project-qualifier,
-  .hero-visual {
+  html:not([data-theme="light"]) .project-qualifier,
+  html:not([data-theme="light"]) .hero-visual {
     background: rgba(15, 23, 42, 0.6);
   }
+}
+
+html[data-theme="dark"] .project-qualifier,
+html[data-theme="dark"] .hero-visual {
+  background: rgba(15, 23, 42, 0.6);
 }
 
 .card-elevated {
@@ -209,9 +261,13 @@ a:focus-visible {
 }
 
 @media (prefers-color-scheme: dark) {
-  .card-elevated {
+  html:not([data-theme="light"]) .card-elevated {
     background: rgba(15, 23, 42, 0.65);
   }
+}
+
+html[data-theme="dark"] .card-elevated {
+  background: rgba(15, 23, 42, 0.65);
 }
 
 .timeline {
@@ -260,9 +316,13 @@ a:focus-visible {
 }
 
 @media (prefers-color-scheme: dark) {
-  .metric {
+  html:not([data-theme="light"]) .metric {
     background: rgba(15, 23, 42, 0.65);
   }
+}
+
+html[data-theme="dark"] .metric {
+  background: rgba(15, 23, 42, 0.65);
 }
 
 .case-card h3 {
@@ -292,9 +352,13 @@ a:focus-visible {
 }
 
 @media (prefers-color-scheme: dark) {
-  .tech-tabs {
+  html:not([data-theme="light"]) .tech-tabs {
     background: rgba(15, 23, 42, 0.65);
   }
+}
+
+html[data-theme="dark"] .tech-tabs {
+  background: rgba(15, 23, 42, 0.65);
 }
 
 .tech-tablist {
@@ -354,10 +418,15 @@ a:focus-visible {
 }
 
 @media (prefers-color-scheme: dark) {
-  .testimonial,
-  .tech-panel figure {
+  html:not([data-theme="light"]) .testimonial,
+  html:not([data-theme="light"]) .tech-panel figure {
     background: rgba(15, 23, 42, 0.6);
   }
+}
+
+html[data-theme="dark"] .testimonial,
+html[data-theme="dark"] .tech-panel figure {
+  background: rgba(15, 23, 42, 0.6);
 }
 
 .slider-dots {
@@ -416,10 +485,15 @@ a:focus-visible {
 }
 
 @media (prefers-color-scheme: dark) {
-  .cta-banner {
+  html:not([data-theme="light"]) .cta-banner {
     color: #fff;
     background: linear-gradient(135deg, rgba(11, 110, 253, 0.4), rgba(11, 110, 253, 0.7));
   }
+}
+
+html[data-theme="dark"] .cta-banner {
+  color: #fff;
+  background: linear-gradient(135deg, rgba(11, 110, 253, 0.4), rgba(11, 110, 253, 0.7));
 }
 
 .site-footer {
@@ -485,9 +559,13 @@ a:focus-visible {
 }
 
 @media (prefers-color-scheme: dark) {
-  .contact-modal__dialog {
+  html:not([data-theme="light"]) .contact-modal__dialog {
     background: rgba(15, 23, 42, 0.9);
   }
+}
+
+html[data-theme="dark"] .contact-modal__dialog {
+  background: rgba(15, 23, 42, 0.9);
 }
 
 .contact-modal__close {
@@ -498,6 +576,17 @@ a:focus-visible {
   border: none;
   font-size: 1.5rem;
   color: var(--neutral-600);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.reveal--in {
+  opacity: 1;
+  transform: none;
 }
 
 .form-control-lg,
@@ -539,6 +628,17 @@ button:focus-visible {
 
   .testimonial-track {
     transition: none;
+  }
+
+  .reveal {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .reveal--in {
+    opacity: 1;
+    transform: none;
   }
 }
 
@@ -637,15 +737,25 @@ ul.check-list li::before {
 }
 
 @media (prefers-color-scheme: dark) {
-  .case-grid article,
-  .hash-filter button {
+  html:not([data-theme="light"]) .case-grid article,
+  html:not([data-theme="light"]) .hash-filter button {
     background: rgba(15, 23, 42, 0.65);
     color: var(--neutral-600);
   }
 
-  .hash-filter button[aria-pressed="true"] {
+  html:not([data-theme="light"]) .hash-filter button[aria-pressed="true"] {
     color: #fff;
   }
+}
+
+html[data-theme="dark"] .case-grid article,
+html[data-theme="dark"] .hash-filter button {
+  background: rgba(15, 23, 42, 0.65);
+  color: var(--neutral-600);
+}
+
+html[data-theme="dark"] .hash-filter button[aria-pressed="true"] {
+  color: #fff;
 }
 
 .breadcrumbs {

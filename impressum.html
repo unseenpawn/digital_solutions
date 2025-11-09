@@ -23,13 +23,13 @@
 <body>
   <a class="skip-link" href="#main" data-i18n="common.skip">Zum Inhalt springen</a>
   <header class="site-header shadow-sm">
-    <nav class="navbar navbar-expand-lg" aria-label="Hauptnavigation">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="Hauptnavigation">
       <div class="container-xl">
         <a class="navbar-brand d-flex align-items-center" href="index.html" data-route="home">
           <img src="assets/img/logo.svg" alt="Digital Solutions Logo" width="36" height="36" loading="eager" decoding="async" data-asset-src="assets/img/logo.svg">
           <span class="fw-semibold ms-2">Digital Solutions</span>
         </a>
-        <button class="navbar-toggler" type="button" aria-controls="mainNav" aria-expanded="false" aria-label="Menü umschalten">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Menü umschalten">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="mainNav">
@@ -47,6 +47,12 @@
                 <button type="button" role="option" data-lang-option="en">English</button>
               </div>
             </li>
+            <li class="nav-item ms-lg-2">
+              <button class="btn btn-outline btn-sm d-flex align-items-center gap-2" type="button" data-theme-toggle aria-pressed="false">
+                <span class="theme-toggle-icon" aria-hidden="true" data-theme-toggle-icon>☀</span>
+                <span data-theme-toggle-text>Hell</span>
+              </button>
+            </li>
           </ul>
         </div>
       </div>
@@ -59,7 +65,7 @@
         <h1 class="h1" data-i18n="content.title">Impressum</h1>
         <p class="text-body-secondary" data-i18n="content.subtitle">Gesetzliche Informationspflicht gemäss schweizerischem Recht.</p>
       </div>
-      <div class="card-elevated">
+      <div class="card-elevated reveal">
         <h2 class="h4" data-i18n="content.company">Angaben zum Unternehmen</h2>
         <p data-i18n="content.address">Digital Solutions GmbH<br>Limmatquai 1<br>8001 Zürich<br>Schweiz</p>
         <p data-i18n="content.register">Handelsregister: CHE-123.456.789<br>MWST: CHE-123.456.789 MWST</p>
