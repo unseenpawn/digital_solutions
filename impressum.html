@@ -3,27 +3,31 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Digital Solutions – Impressum</title>
-  <meta name="description" content="Impressum von Digital Solutions, Zürich.">
-  <link rel="canonical" href="https://www.example.com/impressum.html">
+  <title>Impressum – Digital Solutions</title>
+  <meta name="description" content="Rechtliche Angaben von Digital Solutions, Zürich.">
+  <link rel="canonical" href="https://www.digital-solutions.swiss/impressum.html">
+  <link rel="alternate" hreflang="de" href="https://www.digital-solutions.swiss/impressum.html">
+  <link rel="alternate" hreflang="en" href="https://www.digital-solutions.swiss/impressum.html?lang=en">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Digital Solutions – Impressum">
-  <meta property="og:description" content="Rechtliche Angaben und Kontakt.">
-  <meta property="og:url" content="https://www.example.com/impressum.html">
-  <meta property="og:image" content="https://www.example.com/assets/img/og-image.svg">
+  <meta property="og:title" content="Impressum – Digital Solutions">
+  <meta property="og:description" content="Unternehmensangaben, Kontakt und Haftungsausschlüsse.">
+  <meta property="og:url" content="https://www.digital-solutions.swiss/impressum.html">
+  <meta property="og:image" content="https://www.digital-solutions.swiss/assets/img/og-image.svg">
   <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
 <body>
+  <a class="skip-link" href="#main" data-i18n="common.skip">Zum Inhalt springen</a>
   <header class="site-header shadow-sm">
-    <nav class="navbar navbar-expand-lg navbar-light bg-body" aria-label="Hauptnavigation">
+    <nav class="navbar navbar-expand-lg" aria-label="Hauptnavigation">
       <div class="container-xl">
         <a class="navbar-brand d-flex align-items-center" href="/">
-          <img src="/assets/img/logo.svg" alt="Digital Solutions Logo" width="36" height="36" class="me-2">
-          <span class="fw-semibold">Digital Solutions</span>
+          <img src="/assets/img/logo.svg" alt="Digital Solutions Logo" width="36" height="36" loading="eager" decoding="async">
+          <span class="fw-semibold ms-2">Digital Solutions</span>
         </a>
         <button class="navbar-toggler" type="button" aria-controls="mainNav" aria-expanded="false" aria-label="Menü umschalten">
           <span class="navbar-toggler-icon"></span>
@@ -35,8 +39,13 @@
             <li class="nav-item"><a class="nav-link" href="/referenzen.html" data-i18n="nav.work">Referenzen</a></li>
             <li class="nav-item"><a class="nav-link" href="/ueber-uns.html" data-i18n="nav.about">Über uns</a></li>
             <li class="nav-item"><a class="nav-link" href="/kontakt.html" data-i18n="nav.contact">Kontakt</a></li>
-            <li class="nav-item ms-lg-3">
-              <button class="btn btn-accent" data-i18n="nav.cta" data-nav-cta>Projekt anfragen</button>
+            <li class="nav-item ms-lg-3"><button class="btn btn-accent" type="button" data-open-contact data-cta-source="nav" data-i18n="nav.cta">Projekt anfragen</button></li>
+            <li class="nav-item ms-lg-3 position-relative">
+              <button class="btn btn-outline btn-sm" type="button" data-lang-toggle aria-haspopup="listbox" aria-expanded="false">DE</button>
+              <div class="visually-hidden" role="listbox" data-lang-menu>
+                <button type="button" role="option" data-lang-option="de">Deutsch</button>
+                <button type="button" role="option" data-lang-option="en">English</button>
+              </div>
             </li>
           </ul>
         </div>
@@ -44,61 +53,170 @@
     </nav>
   </header>
 
-  <main class="py-5">
-    <div class="container-xl">
-      <h1 class="h2 mb-4" data-i18n="page.title">Impressum</h1>
-      <p class="text-body-secondary" data-i18n="page.text">Digital Solutions GmbH<br>Limmatquai 1<br>8001 Zürich<br>Schweiz</p>
-      <p class="text-body-secondary" data-i18n="page.register">Handelsregister: CHE-123.456.789<br>UID: CHE-987.654.321</p>
-      <p class="text-body-secondary" data-i18n="page.responsible">Verantwortlich für den Inhalt: Mia Keller<br>E-Mail: hallo@example.com<br>Tel: +41 44 000 00 00</p>
+  <main id="main" class="py-5">
+    <div class="container-xl" data-i18n-scope="content">
+      <div class="section-title mb-4">
+        <h1 class="h1" data-i18n="content.title">Impressum</h1>
+        <p class="text-body-secondary" data-i18n="content.subtitle">Gesetzliche Informationspflicht gemäss schweizerischem Recht.</p>
+      </div>
+      <div class="card-elevated">
+        <h2 class="h4" data-i18n="content.company">Angaben zum Unternehmen</h2>
+        <p data-i18n="content.address">Digital Solutions GmbH<br>Limmatquai 1<br>8001 Zürich<br>Schweiz</p>
+        <p data-i18n="content.register">Handelsregister: CHE-123.456.789<br>MWST: CHE-123.456.789 MWST</p>
+        <h3 class="h5 mt-4" data-i18n="content.contact">Kontakt</h3>
+        <p><a href="mailto:hallo@digital-solutions.swiss">hallo@digital-solutions.swiss</a><br><a href="tel:+41440000000">+41 44 000 00 00</a></p>
+        <h3 class="h5 mt-4" data-i18n="content.liability">Haftungsausschluss</h3>
+        <p data-i18n="content.liabilityText">Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für externe Links. Für den Inhalt verlinkter Seiten sind ausschliesslich deren Betreiber verantwortlich.</p>
+        <h3 class="h5 mt-4" data-i18n="content.copyright">Urheberrecht</h3>
+        <p data-i18n="content.copyrightText">Inhalte, Designs und Code dieser Website sind urheberrechtlich geschützt. Eine Nutzung ohne schriftliche Zustimmung ist untersagt.</p>
+      </div>
     </div>
   </main>
 
-  <footer class="site-footer mt-auto py-5 bg-body-tertiary" data-i18n-scope="footer">
+  <footer class="site-footer" data-i18n-scope="footer">
     <div class="container-xl">
-      <div class="row g-4">
-        <div class="col-md-4">
-          <a href="/" class="d-inline-flex align-items-center mb-3 text-decoration-none">
-            <img src="/assets/img/logo.svg" alt="Digital Solutions" width="36" height="36" class="me-2">
-            <span class="fw-semibold">Digital Solutions</span>
-          </a>
-          <p class="text-body-secondary" data-i18n="footer.copy">Digitale Lösungen aus Zürich. Automatisierung, Integrationen, Web.</p>
-          <p class="small text-body-secondary mb-0">&copy; <span data-year></span> Digital Solutions. All rights reserved.</p>
+      <div class="footer-meta mb-4">
+        <div>
+          <h3 class="h5 mb-3">Digital Solutions</h3>
+          <p data-i18n="footer.copy">Digitale Lösungen aus Zürich. Automatisierung, Integrationen, Web.</p>
+          <p class="mb-0" data-i18n="footer.address">Limmatquai 1, 8001 Zürich</p>
+          <p class="mb-0"><a href="mailto:hallo@digital-solutions.swiss">hallo@digital-solutions.swiss</a> · <a href="tel:+41440000000">+41 44 000 00 00</a></p>
         </div>
-        <div class="col-md-4">
-          <h3 class="h6 text-uppercase text-body-secondary" data-i18n="footer.contact">Kontakt</h3>
-          <ul class="list-unstyled">
-            <li><a href="tel:+41440000000" class="link-body-emphasis">+41 44 000 00 00</a></li>
-            <li><a href="mailto:hallo@example.com" class="link-body-emphasis">hallo@example.com</a></li>
-            <li><span data-i18n="footer.address">Limmatquai 1, 8001 Zürich</span></li>
+        <div>
+          <h4 class="h6 text-uppercase" data-i18n="footer.contact">Kontakt</h4>
+          <ul class="list-unstyled mb-0">
+            <li><a href="/kontakt.html" data-i18n="footer.cta">Projekt anfragen</a></li>
+            <li><a href="https://www.linkedin.com/company/digital-solutions" rel="noopener" target="_blank">LinkedIn</a></li>
           </ul>
         </div>
-        <div class="col-md-4">
-          <h3 class="h6 text-uppercase text-body-secondary" data-i18n="footer.legal">Rechtliches</h3>
-          <ul class="list-unstyled">
-            <li><a href="/impressum.html" class="link-body-emphasis" data-i18n="footer.imprint">Impressum</a></li>
-            <li><a href="/datenschutz.html" class="link-body-emphasis" data-i18n="footer.privacy">Datenschutz</a></li>
-            <li><a href="/sitemap.xml" class="link-body-emphasis" data-i18n="footer.sitemap">Sitemap</a></li>
+        <div>
+          <h4 class="h6 text-uppercase" data-i18n="footer.legal">Rechtliches</h4>
+          <ul class="list-unstyled mb-0">
+            <li><a class="fw-semibold" href="/impressum.html" data-i18n="footer.imprint">Impressum</a></li>
+            <li><a href="/datenschutz.html" data-i18n="footer.privacy">Datenschutz</a></li>
+            <li><a href="/sitemap.xml" data-i18n="footer.sitemap">Sitemap</a></li>
           </ul>
         </div>
       </div>
+      <p class="small mb-0">© <span data-year></span> Digital Solutions</p>
     </div>
   </footer>
 
+  <button class="btn btn-accent" type="button" data-sticky-cta data-open-contact data-cta-source="sticky">Jetzt Projekt anfragen</button>
+
+  <div class="contact-modal" data-contact-modal hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+    <div class="contact-modal__dialog">
+      <button class="contact-modal__close" type="button" aria-label="Schließen" data-close-contact>&times;</button>
+      <h2 class="h3 mb-3" id="contact-modal-title" data-i18n="modal.title">Kurz Projekt skizzieren</h2>
+      <p class="text-body-secondary" data-i18n="modal.intro">Teilen Sie kurz Ziel, Budget und Zeithorizont – wir melden uns in maximal 24 Stunden.</p>
+      <form class="mt-3" action="/kontakt.php" method="post" data-contact-form data-context="modal">
+        <div class="contact-form-grid">
+          <div>
+            <label class="form-label" for="modal-name" data-i18n="form.name">Name *</label>
+            <input class="form-control form-control-lg" type="text" id="modal-name" name="name" minlength="2" required autocomplete="name">
+          </div>
+          <div>
+            <label class="form-label" for="modal-email" data-i18n="form.email">E-Mail *</label>
+            <input class="form-control form-control-lg" type="email" id="modal-email" name="email" required autocomplete="email">
+          </div>
+          <div>
+            <label class="form-label" for="modal-phone" data-i18n="form.phone">Telefon</label>
+            <input class="form-control form-control-lg" type="tel" id="modal-phone" name="phone" autocomplete="tel">
+          </div>
+          <div>
+            <label class="form-label" for="modal-company" data-i18n="form.company">Firma</label>
+            <input class="form-control form-control-lg" type="text" id="modal-company" name="company" autocomplete="organization">
+          </div>
+          <div>
+            <label class="form-label" for="modal-budget" data-i18n="form.budget">Budgetrahmen *</label>
+            <select class="form-select" id="modal-budget" name="budget" required>
+              <option value="" data-i18n="form.select">Bitte wählen</option>
+              <option value="2500-5000">CHF 2’500–5’000</option>
+              <option value="5000-15000">CHF 5’000–15’000</option>
+              <option value="15000+">CHF 15’000+</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label" for="modal-message" data-i18n="form.message">Projektbeschreibung *</label>
+            <textarea class="form-control form-control-lg" id="modal-message" name="message" minlength="20" required></textarea>
+          </div>
+          <div>
+            <label class="form-label" for="modal-timeline" data-i18n="form.timeline">Zeithorizont *</label>
+            <select class="form-select" id="modal-timeline" name="timeline" required>
+              <option value="" data-i18n="form.select">Bitte wählen</option>
+              <option value="2-4">Go-Live in 2–4 Wochen</option>
+              <option value="6-8">Go-Live in 6–8 Wochen</option>
+              <option value="flexibel">Flexibel / nach Absprache</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label" for="modal-project" data-i18n="form.project">Art des Projekts *</label>
+            <select class="form-select" id="modal-project" name="project_type" required>
+              <option value="" data-i18n="form.select">Bitte wählen</option>
+              <option value="web">Webseite / Web-App</option>
+              <option value="automation">Automatisierung / Bot</option>
+              <option value="integration">Integration / Schnittstelle</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-check mt-3">
+          <input class="form-check-input" type="checkbox" id="modal-consent" name="consent" value="1" required>
+          <label class="form-check-label" for="modal-consent" data-i18n="form.consent">Ich stimme der Verarbeitung meiner Angaben zum Zweck der Kontaktaufnahme zu.</label>
+        </div>
+        <input type="text" name="website" value="" class="visually-hidden" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="form_started_at" value="">
+        <div class="form-alert visually-hidden" role="status" aria-live="polite" data-form-feedback></div>
+        <div class="d-flex flex-wrap gap-3 align-items-center mt-3">
+          <button class="btn btn-accent" type="submit" data-i18n="form.submit">Abschicken</button>
+          <span class="text-body-secondary small" data-i18n="form.note">Antwort in spätestens 24h, inkl. nächster Schritte.</span>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
+  <script type="module" src="/assets/js/main.js" defer></script>
   <script type="application/json" id="translations">
   {
     "de": {
+      "common": {"skip": "Zum Inhalt springen"},
       "nav": {"home": "Start", "services": "Leistungen", "work": "Referenzen", "about": "Über uns", "contact": "Kontakt", "cta": "Projekt anfragen"},
-      "page": {"title": "Impressum", "text": "Digital Solutions GmbH<br>Limmatquai 1<br>8001 Zürich<br>Schweiz", "register": "Handelsregister: CHE-123.456.789<br>UID: CHE-987.654.321", "responsible": "Verantwortlich für den Inhalt: Mia Keller<br>E-Mail: hallo@example.com<br>Tel: +41 44 000 00 00"},
-      "footer": {"copy": "Digitale Lösungen aus Zürich. Automatisierung, Integrationen, Web.", "contact": "Kontakt", "address": "Limmatquai 1, 8001 Zürich", "legal": "Rechtliches", "imprint": "Impressum", "privacy": "Datenschutz", "sitemap": "Sitemap"}
+      "content": {
+        "title": "Impressum",
+        "subtitle": "Gesetzliche Informationspflicht gemäss schweizerischem Recht.",
+        "company": "Angaben zum Unternehmen",
+        "address": "Digital Solutions GmbH<br>Limmatquai 1<br>8001 Zürich<br>Schweiz",
+        "register": "Handelsregister: CHE-123.456.789<br>MWST: CHE-123.456.789 MWST",
+        "contact": "Kontakt",
+        "liability": "Haftungsausschluss",
+        "liabilityText": "Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für externe Links. Für den Inhalt verlinkter Seiten sind ausschliesslich deren Betreiber verantwortlich.",
+        "copyright": "Urheberrecht",
+        "copyrightText": "Inhalte, Designs und Code dieser Website sind urheberrechtlich geschützt. Eine Nutzung ohne schriftliche Zustimmung ist untersagt."
+      },
+      "footer": {"copy": "Digitale Lösungen aus Zürich. Automatisierung, Integrationen, Web.", "address": "Limmatquai 1, 8001 Zürich", "contact": "Kontakt", "legal": "Rechtliches", "imprint": "Impressum", "privacy": "Datenschutz", "sitemap": "Sitemap", "cta": "Projekt anfragen"},
+      "modal": {"title": "Kurz Projekt skizzieren", "intro": "Teilen Sie kurz Ziel, Budget und Zeithorizont – wir melden uns in maximal 24 Stunden."},
+      "form": {"name": "Name *", "email": "E-Mail *", "phone": "Telefon", "company": "Firma", "budget": "Budgetrahmen *", "message": "Projektbeschreibung *", "timeline": "Zeithorizont *", "project": "Art des Projekts *", "consent": "Ich stimme der Verarbeitung meiner Angaben zum Zweck der Kontaktaufnahme zu.", "select": "Bitte wählen", "submit": "Abschicken", "note": "Antwort in spätestens 24h, inkl. nächster Schritte."}
     },
     "en": {
+      "common": {"skip": "Skip to content"},
       "nav": {"home": "Home", "services": "Services", "work": "Work", "about": "About", "contact": "Contact", "cta": "Request project"},
-      "page": {"title": "Legal disclosure", "text": "Digital Solutions GmbH<br>Limmatquai 1<br>8001 Zurich<br>Switzerland", "register": "Commercial register: CHE-123.456.789<br>UID: CHE-987.654.321", "responsible": "Content lead: Mia Keller<br>Email: hallo@example.com<br>Phone: +41 44 000 00 00"},
-      "footer": {"copy": "Digital solutions from Zurich. Automation, integrations, web.", "contact": "Contact", "address": "Limmatquai 1, 8001 Zurich", "legal": "Legal", "imprint": "Imprint", "privacy": "Privacy", "sitemap": "Sitemap"}
+      "content": {
+        "title": "Imprint",
+        "subtitle": "Mandatory company information under Swiss law.",
+        "company": "Company details",
+        "address": "Digital Solutions GmbH<br>Limmatquai 1<br>8001 Zurich<br>Switzerland",
+        "register": "Commercial register: CHE-123.456.789<br>VAT: CHE-123.456.789 MWST",
+        "contact": "Contact",
+        "liability": "Liability",
+        "liabilityText": "Despite careful control we assume no liability for external links. The operators of linked sites are solely responsible for their content.",
+        "copyright": "Copyright",
+        "copyrightText": "Content, design and code of this website are protected. Use without written permission is prohibited."
+      },
+      "footer": {"copy": "Digital solutions from Zurich. Automation, integrations, web.", "address": "Limmatquai 1, 8001 Zurich", "contact": "Contact", "legal": "Legal", "imprint": "Imprint", "privacy": "Privacy", "sitemap": "Sitemap", "cta": "Request project"},
+      "modal": {"title": "Outline your project", "intro": "Share goals, budget and timing – we respond within 24 hours."},
+      "form": {"name": "Name *", "email": "Email *", "phone": "Phone", "company": "Company", "budget": "Budget range *", "message": "Project description *", "timeline": "Timeline *", "project": "Project type *", "consent": "I agree that my details will be processed for contacting me.", "select": "Please choose", "submit": "Send", "note": "Reply within 24h including next steps."}
     }
   }
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76A2z02tPqdjfq6YhF8dO9uMb4vEw3rjEPhC0RTwEJq1z1jEr2yZp5G5WLa3E" crossorigin="anonymous" defer></script>
-  <script type="module" src="/assets/js/main.js"></script>
 </body>
 </html>
