@@ -15,6 +15,38 @@ $acceptsJson = (bool) preg_match('/application\/json/i', $_SERVER['HTTP_ACCEPT']
 $requestedWith = strtolower($_SERVER['HTTP_X_REQUESTED_WITH'] ?? '');
 $expectsJson = $acceptsJson || $requestedWith === 'xmlhttprequest';
 
+function ds_base_path(): string
+{
+    $scriptName = $_SERVER['SCRIPT_NAME'] ?? '';
+    $directory = str_replace('\\', '/', dirname($scriptName));
+    if ($directory === '\\' || $directory === '/') {
+        return '/';
+    }
+    $directory = rtrim($directory, '/');
+    if ($directory === '' || $directory === '.') {
+        return '/';
+    }
+    return $directory . '/';
+}
+
+function ds_build_path(string $target = ''): string
+{
+    $basePath = ds_base_path();
+    if ($target === '' || $target === '.') {
+        return $basePath;
+    }
+
+    if (preg_match('#^(?:[a-z]+:)?//#i', $target) === 1) {
+        return $target;
+    }
+
+    if ($target[0] === '#' || $target[0] === '/') {
+        return $target;
+    }
+
+    return $basePath . ltrim($target, '/');
+}
+
 function ds_response(array $payload, int $status, bool $json): void
 {
     if ($json) {
@@ -25,24 +57,40 @@ function ds_response(array $payload, int $status, bool $json): void
         header('Content-Type: text/html; charset=utf-8');
         http_response_code($status);
         $message = htmlspecialchars($payload['message'] ?? '', ENT_QUOTES, 'UTF-8');
-        echo "<!DOCTYPE html><html lang=\"de\"><head><meta charset=\"utf-8\"><title>Kontakt</title><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"></head><body style=\"font-family:Arial,sans-serif;padding:2rem;\"><h1>Kontakt</h1><p>{$message}</p><p><a href=\"/kontakt.html\">Zurück zum Formular</a></p></body></html>";
+        $contactPath = htmlspecialchars(ds_build_path('kontakt.html'), ENT_QUOTES, 'UTF-8');
+        echo "<!DOCTYPE html><html lang=\"de\"><head><meta charset=\"utf-8\"><title>Kontakt</title><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"></head><body style=\"font-family:Arial,sans-serif;padding:2rem;\"><h1>Kontakt</h1><p>{$message}</p><p><a href=\"{$contactPath}\">Zurück zum Formular</a></p></body></html>";
     }
     exit;
 }
 
-function ds_log(string $message): void
+function ds_log_write(string $line): void
 {
     $logDir = __DIR__ . '/logs';
     if (!is_dir($logDir)) {
         mkdir($logDir, 0750, true);
     }
     $logFile = sprintf('%s/kontakt-%s.log', $logDir, date('Ymd'));
-    $line = sprintf('[%s] %s', date('c'), $message);
     $created = !file_exists($logFile);
     file_put_contents($logFile, $line . PHP_EOL, FILE_APPEND | LOCK_EX);
     if ($created) {
         @chmod($logFile, 0640);
     }
+}
+
+function ds_log(string $message): void
+{
+    $line = sprintf('[%s] %s', date('c'), $message);
+    ds_log_write($line);
+}
+
+function ds_log_submission(array $data): void
+{
+    $encoded = json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    if ($encoded === false) {
+        ds_log('JSON-Logging fehlgeschlagen: ' . json_last_error_msg());
+        return;
+    }
+    ds_log_write($encoded);
 }
 
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
@@ -55,6 +103,7 @@ $input = filter_input_array(INPUT_POST, [
     'phone' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
     'company' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
     'budget' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+    'budget_range' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
     'message' => FILTER_UNSAFE_RAW,
     'consent' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
     'website' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
@@ -65,6 +114,13 @@ $input = filter_input_array(INPUT_POST, [
     'stack' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
     'deadline' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
     'context' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+    'systemlandschaft' => FILTER_UNSAFE_RAW,
+    'utm_source' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+    'utm_medium' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+    'utm_campaign' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+    'utm_term' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+    'utm_content' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+    'referrer' => FILTER_UNSAFE_RAW,
 ]);
 
 if (!is_array($input)) {
@@ -83,6 +139,7 @@ $email = trim((string) ($input['email'] ?? ''));
 $phone = trim((string) ($input['phone'] ?? ''));
 $company = trim((string) ($input['company'] ?? ''));
 $budget = trim((string) ($input['budget'] ?? ''));
+$budgetRange = trim((string) ($input['budget_range'] ?? ''));
 $message = trim((string) ($input['message'] ?? ''));
 $consent = isset($input['consent']);
 $timeline = trim((string) ($input['timeline'] ?? ''));
@@ -91,6 +148,13 @@ $impact = trim((string) ($input['impact'] ?? ''));
 $stack = trim((string) ($input['stack'] ?? ''));
 $deadline = trim((string) ($input['deadline'] ?? ''));
 $context = trim((string) ($input['context'] ?? 'page'));
+$systemLandscape = trim((string) ($input['systemlandschaft'] ?? ''));
+$utmSource = trim((string) ($input['utm_source'] ?? ''));
+$utmMedium = trim((string) ($input['utm_medium'] ?? ''));
+$utmCampaign = trim((string) ($input['utm_campaign'] ?? ''));
+$utmTerm = trim((string) ($input['utm_term'] ?? ''));
+$utmContent = trim((string) ($input['utm_content'] ?? ''));
+$referrer = trim((string) ($input['referrer'] ?? ''));
 $formStartedRaw = $input['form_started_at'] ?? '';
 $startedAt = is_numeric($formStartedRaw) ? (float) $formStartedRaw : 0.0;
 if ($startedAt > 1000000000000) { // assume milliseconds
@@ -128,18 +192,6 @@ if ($message === '' || mb_strlen($message) < 20) {
     $errors['message'] = 'Bitte mindestens 20 Zeichen Projektbeschreibung angeben.';
 }
 
-if ($budget === '') {
-    $errors['budget'] = 'Bitte einen Budgetrahmen wählen.';
-}
-
-if ($timeline === '') {
-    $errors['timeline'] = 'Bitte den Zeithorizont auswählen.';
-}
-
-if ($projectType === '') {
-    $errors['project_type'] = 'Bitte die Projektart auswählen.';
-}
-
 if (!$consent) {
     $errors['consent'] = 'Bitte den Datenschutzhinweis bestätigen.';
 }
@@ -157,16 +209,37 @@ $lines = [
     'E-Mail: ' . $email,
     'Telefon: ' . ($phone !== '' ? $phone : '–'),
     'Firma: ' . ($company !== '' ? $company : '–'),
-    'Budget: ' . $budget,
+    'Budget (Legacy): ' . ($budget !== '' ? $budget : '–'),
+    'Budget-Range: ' . ($budgetRange !== '' ? $budgetRange : '–'),
     'Timeline: ' . ($timeline !== '' ? $timeline : '–'),
     'Projektart: ' . ($projectType !== '' ? $projectType : '–'),
     'Impact-Ziel: ' . ($impact !== '' ? $impact : '–'),
     'Tech-Stack: ' . ($stack !== '' ? $stack : '–'),
+    'Systemlandschaft: ' . ($systemLandscape !== '' ? $systemLandscape : '–'),
     'Go-Live Datum: ' . ($deadline !== '' ? $deadline : '–'),
     '',
     'Nachricht:',
     $message,
 ];
+
+$utmDetails = array_filter([
+    'utm_source' => $utmSource,
+    'utm_medium' => $utmMedium,
+    'utm_campaign' => $utmCampaign,
+    'utm_term' => $utmTerm,
+    'utm_content' => $utmContent,
+], static fn($value) => $value !== '');
+
+if (!empty($utmDetails) || $referrer !== '') {
+    $lines[] = '';
+    $lines[] = 'Tracking:';
+    foreach ($utmDetails as $key => $value) {
+        $lines[] = sprintf('%s: %s', $key, $value);
+    }
+    if ($referrer !== '') {
+        $lines[] = 'Referrer: ' . $referrer;
+    }
+}
 
 $body = implode("\n", $lines);
 $headers = [
@@ -183,4 +256,43 @@ if (!$sent) {
     ds_response(['ok' => false, 'message' => 'Versand fehlgeschlagen. Bitte später erneut versuchen.'], 500, $expectsJson);
 }
 
-ds_response(['ok' => true, 'message' => 'Danke! Wir melden uns in Kürze.'], 200, $expectsJson);
+$logEntry = [
+    'timestamp' => date('c'),
+    'ip' => $ip,
+    'status' => 'sent',
+    'context' => $context,
+    'name' => $name,
+    'email' => $email,
+    'phone' => $phone !== '' ? $phone : null,
+    'company' => $company !== '' ? $company : null,
+    'budget' => $budget !== '' ? $budget : null,
+    'budget_range' => $budgetRange !== '' ? $budgetRange : null,
+    'timeline' => $timeline !== '' ? $timeline : null,
+    'project_type' => $projectType !== '' ? $projectType : null,
+    'impact' => $impact !== '' ? $impact : null,
+    'stack' => $stack !== '' ? $stack : null,
+    'deadline' => $deadline !== '' ? $deadline : null,
+    'systemlandschaft' => $systemLandscape !== '' ? $systemLandscape : null,
+    'message' => $message,
+];
+
+if (!empty($utmDetails)) {
+    $logEntry['utm'] = $utmDetails;
+}
+
+if ($referrer !== '') {
+    $logEntry['referrer'] = $referrer;
+}
+
+ds_log_submission($logEntry);
+
+$thankYouPath = ds_build_path('danke.html');
+
+if ($expectsJson) {
+    ds_response(['ok' => true, 'redirect' => $thankYouPath], 200, true);
+}
+
+header('Location: ' . $thankYouPath, true, 303);
+header('Content-Type: text/html; charset=utf-8');
+echo '<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"><title>Weiterleitung</title><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="refresh" content="0;url=' . htmlspecialchars($thankYouPath, ENT_QUOTES, 'UTF-8') . '"></head><body style="font-family:Arial,sans-serif;padding:2rem;"><p>Weiterleitung... <a href="' . htmlspecialchars($thankYouPath, ENT_QUOTES, 'UTF-8') . '">Zur Dankesseite</a></p></body></html>';
+exit;
