@@ -1,4 +1,103 @@
-import { routes, endpoints, buildPath } from './config.js';
+import { routes, endpoints } from './config.js';
+
+const SITE_BASE_RAW = window.__SITE_BASE__ || '';
+const SITE_BASE = SITE_BASE_RAW.replace(/\/+$/, '');
+const SITE_BASE_WITH_SLASH = SITE_BASE ? `${SITE_BASE}/` : '';
+
+function isExternalUrl(value = '') {
+  return /^(?:[a-z]+:)?\/\//i.test(value) || value.startsWith('mailto:') || value.startsWith('tel:');
+}
+
+function prefixSitePath(value = '') {
+  if (!value || value === '.' || value.startsWith('#') || isExternalUrl(value)) {
+    return value;
+  }
+  const [beforeHash, hashPart] = value.split('#');
+  const [pathPart, searchPart] = beforeHash.split('?');
+  const normalisedPath = pathPart.replace(/^\.\/?/, '').replace(/^\/+/, '');
+  const query = searchPart ? `?${searchPart}` : '';
+  const hash = hashPart ? `#${hashPart}` : '';
+  if (!SITE_BASE_WITH_SLASH) {
+    return `${normalisedPath}${query}${hash}`;
+  }
+  if (beforeHash.startsWith(SITE_BASE_WITH_SLASH) || beforeHash === SITE_BASE) {
+    return `${beforeHash}${hash}`;
+  }
+  return `${SITE_BASE_WITH_SLASH}${normalisedPath}${query}${hash}`;
+}
+
+function appendLocaleParam(url, locale = '') {
+  const activeLocale = locale || currentLocale;
+  if (!url || !activeLocale || activeLocale === defaultLocale || url.startsWith('#') || isExternalUrl(url)) {
+    return url;
+  }
+  const [beforeHash, hashPart] = url.split('#');
+  const [pathPart, searchPart] = beforeHash.split('?');
+  const params = new URLSearchParams(searchPart || '');
+  if (!params.has('lang')) {
+    params.set('lang', activeLocale);
+  }
+  const query = params.toString();
+  const hash = hashPart ? `#${hashPart}` : '';
+  return `${pathPart}${query ? `?${query}` : ''}${hash}`;
+}
+
+function formatInternalLink(value = '', options = {}) {
+  const { includeLocale = true } = options;
+  let url = prefixSitePath(value);
+  if (includeLocale) {
+    url = appendLocaleParam(url);
+  }
+  return url;
+}
+
+function syncLocaleToUrl(locale) {
+  const url = new URL(window.location.href);
+  if (locale && locale !== defaultLocale) {
+    url.searchParams.set('lang', locale);
+  } else {
+    url.searchParams.delete('lang');
+  }
+  const newUrl = `${url.pathname}${url.search}${url.hash}`;
+  window.history.replaceState({}, '', newUrl);
+}
+
+function onReady(callback) {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', callback, { once: true });
+  } else {
+    callback();
+  }
+}
+
+function resolveSeoUrl(path = '/') {
+  if (!path) {
+    return SEO_CANONICAL_HOST;
+  }
+  if (isExternalUrl(path)) {
+    return path;
+  }
+  if (path.startsWith('/')) {
+    return `${SEO_CANONICAL_HOST}${path}`;
+  }
+  return `${SEO_CANONICAL_HOST}/${path}`;
+}
+
+function applySeoHosts() {
+  const canonical = document.querySelector('[data-canonical-path]');
+  if (canonical) {
+    const localeSuffix = currentLocale ? `${currentLocale.charAt(0).toUpperCase()}${currentLocale.slice(1)}` : '';
+    const localeKey = localeSuffix ? `canonicalPath${localeSuffix}` : '';
+    const localePath = localeKey && canonical.dataset[localeKey];
+    const path = localePath || canonical.dataset.canonicalPath || '/';
+    canonical.setAttribute('href', resolveSeoUrl(path));
+  }
+  document.querySelectorAll('[data-hreflang-path]').forEach((link) => {
+    const lang = link.getAttribute('hreflang');
+    const path = link.dataset.hreflangPath || SEO_HREFLANG_PATHS[lang] || '/';
+    link.setAttribute('href', resolveSeoUrl(path));
+  });
+}
 
 const prefersReducedMotionMedia = window.matchMedia('(prefers-reduced-motion: reduce)');
 let prefersReducedMotion = prefersReducedMotionMedia.matches;
@@ -23,7 +122,9 @@ if (translationsElement) {
 
 const localeStorageKey = 'ds-locale';
 const defaultLocale = document.documentElement.lang || 'de';
-let currentLocale = localStorage.getItem(localeStorageKey) || defaultLocale;
+const storedLocale = localStorage.getItem(localeStorageKey);
+const queryLocale = new URLSearchParams(window.location.search).get('lang');
+let currentLocale = queryLocale || storedLocale || defaultLocale;
 
 const themeStorageKey = 'ds-theme';
 const defaultThemeName = 'light';
@@ -41,6 +142,16 @@ const themeToggleIcons = {
   dark: '☾',
 };
 let currentTheme = defaultThemeName;
+const langToggleButton = document.querySelector('[data-lang-toggle]');
+const languageToggleLabels = {
+  de: { button: 'EN', aria: 'Auf Englisch wechseln' },
+  en: { button: 'DE', aria: 'Switch language to German' },
+};
+const SEO_CANONICAL_HOST = 'https://www.digital-solutions.swiss';
+const SEO_HREFLANG_PATHS = {
+  de: '/',
+  en: '/?lang=en',
+};
 
 function updateThemeColorMeta(theme) {
   if (themeColorMeta) {
@@ -60,6 +171,19 @@ function updateThemeToggleState(theme) {
   if (themeToggleIcon) {
     themeToggleIcon.textContent = themeToggleIcons[theme] || themeToggleIcons.light;
   }
+}
+
+function getNextLocale(locale = currentLocale) {
+  return locale === 'de' ? 'en' : 'de';
+}
+
+function updateLanguageToggleUI() {
+  if (!langToggleButton) return;
+  const config = languageToggleLabels[currentLocale] || languageToggleLabels[defaultLocale] || languageToggleLabels.de;
+  langToggleButton.textContent = config.button;
+  langToggleButton.setAttribute('aria-label', config.aria);
+  langToggleButton.setAttribute('aria-pressed', currentLocale === defaultLocale ? 'false' : 'true');
+  langToggleButton.dataset.targetLocale = getNextLocale();
 }
 
 function setTheme(theme, { save = true, emit = false } = {}) {
@@ -141,11 +265,10 @@ function applyTranslations(locale) {
   document.documentElement.lang = locale;
   currentLocale = locale;
   localStorage.setItem(localeStorageKey, locale);
-  const langToggle = document.querySelector('[data-lang-toggle]');
-  if (langToggle) {
-    langToggle.textContent = locale.toUpperCase();
-    langToggle.setAttribute('aria-expanded', 'false');
-  }
+  syncLocaleToUrl(locale);
+  updateLanguageToggleUI();
+  applyRoutingConfig();
+  applySeoHosts();
   updateThemeToggleState(currentTheme);
   logEvent('locale_change', { locale });
 }
@@ -182,7 +305,7 @@ function applyRoutingConfig() {
     if (!key) return;
     const target = routes[key];
     if (target) {
-      el.setAttribute('href', target);
+      el.setAttribute('href', formatInternalLink(target));
     }
   });
 
@@ -191,80 +314,42 @@ function applyRoutingConfig() {
     if (!key) return;
     const target = endpoints[key];
     if (target) {
-      form.setAttribute('action', target);
+      form.setAttribute('action', prefixSitePath(target));
     }
   });
 
   document.querySelectorAll('[data-asset-src]').forEach((el) => {
     const assetTarget = el.dataset.assetSrc;
     if (!assetTarget) return;
-    el.setAttribute('src', buildPath(assetTarget));
+    el.setAttribute('src', prefixSitePath(assetTarget));
   });
 
   document.querySelectorAll('[data-asset-href]').forEach((el) => {
     const assetTarget = el.dataset.assetHref;
     if (!assetTarget) return;
-    el.setAttribute('href', buildPath(assetTarget));
+    el.setAttribute('href', prefixSitePath(assetTarget));
+  });
+
+  document.querySelectorAll('a[href]:not([data-route]):not([data-asset-href])').forEach((anchor) => {
+    const href = anchor.getAttribute('href');
+    if (!href) return;
+    if (href.startsWith('#') || isExternalUrl(href)) return;
+    anchor.setAttribute('href', formatInternalLink(href));
   });
 }
 
-applyRoutingConfig();
+onReady(() => {
+  applyRoutingConfig();
+  applySeoHosts();
+  updateLanguageToggleUI();
+});
 
-const langToggleBtn = document.querySelector('[data-lang-toggle]');
-const langMenu = document.querySelector('[data-lang-menu]');
-let langMenuOpen = false;
-
-function closeLangMenu() {
-  if (!langMenu) return;
-  langMenu.classList.add('visually-hidden');
-  langMenuOpen = false;
-  if (langToggleBtn) {
-    langToggleBtn.setAttribute('aria-expanded', 'false');
-  }
-}
-
-function openLangMenu() {
-  if (!langMenu || !langToggleBtn) return;
-  langMenu.classList.remove('visually-hidden');
-  langMenuOpen = true;
-  langToggleBtn.setAttribute('aria-expanded', 'true');
-  const activeOption = langMenu.querySelector(`[data-lang-option="${currentLocale}"]`);
-  (activeOption || langMenu.querySelector('button'))?.focus();
-}
-
-if (langToggleBtn && langMenu) {
-  closeLangMenu();
-  langToggleBtn.addEventListener('click', (event) => {
-    event.stopPropagation();
-    if (langMenuOpen) {
-      closeLangMenu();
-    } else {
-      openLangMenu();
-    }
-  });
-
-  langMenu.querySelectorAll('[data-lang-option]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const locale = btn.dataset.langOption;
-      if (locale && translations[locale]) {
-        applyTranslations(locale);
-        closeLangMenu();
-        langToggleBtn.focus();
-      }
-    });
-  });
-
-  document.addEventListener('click', (event) => {
-    if (!langMenuOpen) return;
-    if (!langMenu.contains(event.target) && event.target !== langToggleBtn) {
-      closeLangMenu();
-    }
-  });
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && langMenuOpen) {
-      closeLangMenu();
-      langToggleBtn.focus();
+if (langToggleButton) {
+  langToggleButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    const targetLocale = langToggleButton.dataset.targetLocale || getNextLocale();
+    if (targetLocale && translations[targetLocale]) {
+      applyTranslations(targetLocale);
     }
   });
 }
@@ -721,45 +806,109 @@ const caseFilterContainer = document.querySelector('[data-case-filter]');
 if (caseFilterContainer) {
   const filterButtons = Array.from(caseFilterContainer.querySelectorAll('[data-filter]'));
   const caseItems = Array.from(document.querySelectorAll('[data-case-item]'));
+  const availableFilters = new Set(filterButtons.map((button) => button.dataset.filter));
+  availableFilters.add('alle');
+  let activeFilter = 'alle';
+
+  function normaliseFilter(filter) {
+    if (filter && availableFilters.has(filter)) {
+      return filter;
+    }
+    return 'alle';
+  }
 
   function applyFilter(filter) {
+    const nextFilter = normaliseFilter(filter);
+    activeFilter = nextFilter;
     filterButtons.forEach((button) => {
-      const active = button.dataset.filter === filter;
-      button.setAttribute('aria-pressed', active ? 'true' : 'false');
+      const isActive = button.dataset.filter === nextFilter;
+      button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
     });
     caseItems.forEach((item) => {
-      const tags = (item.dataset.tags || '').split(' ');
-      const matches = filter === 'alle' || tags.includes(filter);
+      const tags = (item.dataset.tags || '').split(' ').map((tag) => tag.trim()).filter(Boolean);
+      const matches = nextFilter === 'alle' || tags.includes(nextFilter);
       item.hidden = !matches;
     });
   }
 
-  function setFilter(filter) {
-    applyFilter(filter);
-    const hash = `filter=${encodeURIComponent(filter)}`;
-    if (window.location.hash !== `#${hash}`) {
-      history.replaceState(null, '', `#${hash}`);
+  function updateFilter(filter, { updateHistory = true, method = 'push' } = {}) {
+    const nextFilter = normaliseFilter(filter);
+    applyFilter(nextFilter);
+    const newHash = `#filter=${encodeURIComponent(nextFilter)}`;
+    if (updateHistory && window.location.hash !== newHash) {
+      const historyMethod = method === 'replace' ? 'replaceState' : 'pushState';
+      if (typeof history[historyMethod] === 'function') {
+        history[historyMethod](null, '', newHash);
+      } else {
+        window.location.hash = newHash;
+      }
     }
   }
 
-  function parseHash() {
-    const match = window.location.hash.match(/filter=([^&]+)/);
-    return match ? decodeURIComponent(match[1]) : 'alle';
+  function parseFilterFromHash(hash) {
+    if (!hash) return null;
+    const trimmed = hash.startsWith('#') ? hash.slice(1) : hash;
+    if (!trimmed) return null;
+    if (trimmed.startsWith('case-')) {
+      return null;
+    }
+    const filterMatch = trimmed.match(/^filter=([^&]+)/i);
+    if (filterMatch) {
+      return decodeURIComponent(filterMatch[1]);
+    }
+    return trimmed;
+  }
+
+  function focusCaseById(caseId, { scroll = true } = {}) {
+    const caseElement = document.getElementById(caseId);
+    if (!caseElement) return;
+    const tags = (caseElement.dataset.tags || '').split(' ').map((tag) => tag.trim()).filter(Boolean);
+    const preferredFilter = tags.length ? normaliseFilter(tags[0]) : 'alle';
+    applyFilter(preferredFilter);
+    const previousTabIndex = caseElement.getAttribute('tabindex');
+    caseElement.setAttribute('tabindex', '-1');
+    if (scroll) {
+      const behavior = prefersReducedMotion ? 'auto' : 'smooth';
+      caseElement.scrollIntoView({ behavior, block: 'center' });
+    }
+    if (typeof caseElement.focus === 'function') {
+      try {
+        caseElement.focus({ preventScroll: true });
+      } catch (error) {
+        caseElement.focus();
+      }
+    }
+    const restoreTabIndex = () => {
+      if (previousTabIndex === null) {
+        caseElement.removeAttribute('tabindex');
+      } else {
+        caseElement.setAttribute('tabindex', previousTabIndex);
+      }
+    };
+    caseElement.addEventListener('blur', restoreTabIndex, { once: true });
+  }
+
+  function handleLocationUpdate({ focusCase = false } = {}) {
+    const { hash } = window.location;
+    if (hash && hash.startsWith('#case-')) {
+      focusCaseById(hash.slice(1), { scroll: focusCase });
+      return;
+    }
+    const parsedFilter = parseFilterFromHash(hash);
+    const nextFilter = parsedFilter ? normaliseFilter(parsedFilter) : 'alle';
+    updateFilter(nextFilter, { updateHistory: false, method: 'replace' });
   }
 
   filterButtons.forEach((button) => {
     button.addEventListener('click', () => {
       const filter = button.dataset.filter || 'alle';
-      setFilter(filter);
+      updateFilter(filter, { method: 'push' });
     });
   });
 
-  window.addEventListener('hashchange', () => {
-    const filter = parseHash();
-    applyFilter(filter);
-  });
-
-  applyFilter(parseHash());
+  handleLocationUpdate({ focusCase: true });
+  window.addEventListener('hashchange', () => handleLocationUpdate({ focusCase: true }));
+  window.addEventListener('popstate', () => handleLocationUpdate({ focusCase: true }));
 }
 
 logEvent('page_loaded', { page: document.documentElement.dataset.page });
