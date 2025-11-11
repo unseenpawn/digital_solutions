@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Referenzen – Digital Solutions</title>
   <meta name="description" content="Case Studies: Recruiting-Automation, KMU-Website, Support-Automatisierung – inklusive KPIs und Tech-Stack.">
-  <link rel="canonical" href="https://www.digital-solutions.swiss/referenzen.html">
-  <link rel="alternate" hreflang="de" href="https://www.digital-solutions.swiss/referenzen.html">
-  <link rel="alternate" hreflang="en" href="https://www.digital-solutions.swiss/referenzen.html?lang=en">
+  <link rel="canonical" href="https://www.digital-solutions.swiss/referenzen.html" data-canonical-path="/referenzen.html" data-canonical-path-en="/referenzen.html?lang=en">
+  <link rel="alternate" hreflang="de" href="https://www.digital-solutions.swiss/referenzen.html" data-hreflang-path="/referenzen.html">
+  <link rel="alternate" hreflang="en" href="https://www.digital-solutions.swiss/referenzen.html?lang=en" data-hreflang-path="/referenzen.html?lang=en">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Referenzen – Digital Solutions">
   <meta property="og:description" content="Messbare Ergebnisse: -42% Admin-Aufwand, +38% Leads, -25% First Response Time.">
@@ -53,13 +53,9 @@
             <li class="nav-item"><a class="nav-link active" href="referenzen.html" data-route="work" data-i18n="nav.work">Referenzen</a></li>
             <li class="nav-item"><a class="nav-link" href="ueber-uns.html" data-route="about" data-i18n="nav.about">Über uns</a></li>
             <li class="nav-item"><a class="nav-link" href="kontakt.html" data-route="contact" data-i18n="nav.contact">Kontakt</a></li>
-            <li class="nav-item ms-lg-3"><button class="btn btn-accent" type="button" data-open-contact data-cta-source="nav" data-i18n="nav.cta">Kostenloses Erstgespräch</button></li>
+            <li class="nav-item ms-lg-3"><button class="btn btn-accent" type="button" data-open-contact data-cta-source="nav" data-i18n="nav.cta">Projekt anfragen</button></li>
             <li class="nav-item ms-lg-3 position-relative">
-              <button class="btn btn-outline btn-sm" type="button" data-lang-toggle aria-haspopup="listbox" aria-expanded="false">DE</button>
-              <div class="visually-hidden" role="listbox" data-lang-menu>
-                <button type="button" role="option" data-lang-option="de">Deutsch</button>
-                <button type="button" role="option" data-lang-option="en">English</button>
-              </div>
+              <button class="btn btn-outline btn-sm" type="button" data-lang-toggle aria-pressed="false">EN</button>
             </li>
             <li class="nav-item ms-lg-2">
               <button class="btn btn-outline btn-sm d-flex align-items-center gap-2" type="button" data-theme-toggle aria-pressed="false">
@@ -210,7 +206,7 @@
               <p class="mb-0" data-i18n="cta.subtitle">Wir zeigen in 30 Minuten, welche Automatisierung morgen live gehen kann.</p>
             </div>
             <div class="col-lg-4 text-lg-end">
-              <button class="btn btn-light btn-lg" type="button" data-open-contact data-cta-source="cta" data-i18n="cta.button">Kostenloses Erstgespräch</button>
+              <button class="btn btn-light btn-lg" type="button" data-open-contact data-cta-source="cta" data-i18n="cta.button">Projekt anfragen</button>
             </div>
           </div>
         </div>
@@ -230,7 +226,7 @@
         <div>
           <h4 class="h6 text-uppercase" data-i18n="footer.contact">Kontakt</h4>
           <ul class="list-unstyled mb-0">
-            <li><a href="kontakt.html" data-route="contact" data-i18n="footer.cta">Kostenloses Erstgespräch</a></li>
+            <li><a href="kontakt.html" data-route="contact" data-i18n="footer.cta">Projekt anfragen</a></li>
             <li><a href="https://www.linkedin.com/company/digital-solutions" rel="noopener" target="_blank">LinkedIn</a></li>
           </ul>
         </div>
@@ -247,7 +243,7 @@
     </div>
   </footer>
 
-  <button class="btn btn-accent" type="button" data-sticky-cta data-open-contact data-cta-source="sticky">Kostenloses Erstgespräch</button>
+  <button class="btn btn-accent" type="button" data-sticky-cta data-open-contact data-cta-source="sticky">Projekt anfragen</button>
 
   <div class="contact-modal" data-contact-modal hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
     <div class="contact-modal__dialog">
@@ -325,7 +321,7 @@
   {
     "de": {
       "common": {"skip": "Zum Inhalt springen"},
-      "nav": {"home": "Start", "services": "Leistungen", "work": "Referenzen", "about": "Über uns", "contact": "Kontakt", "cta": "Kostenloses Erstgespräch"},
+      "nav": {"home": "Start", "services": "Leistungen", "work": "Referenzen", "about": "Über uns", "contact": "Kontakt", "cta": "Projekt anfragen"},
       "hero": {"tagline": "Proof statt Versprechen", "title": "Unsere Referenzen liefern konkrete Business-Effekte.", "subtitle": "Von Recruiting über Support bis Vertrieb: wir messen alles – und veröffentlichen die Ergebnisse.", "primaryCta": "Case-Übersicht anzeigen", "secondaryCta": "KPIs sehen"},
       "metrics": {"title": "Ergebnisse in Zahlen", "subtitle": "Durchschnittswerte der letzten 12 Monate, nach Projektkategorie segmentiert.", "items": ["<strong>-42%</strong><span>manuelle Admin-Zeit</span>", "<strong>+38%</strong><span>qualifizierte Leads</span>", "<strong>-25%</strong><span>First Response Time</span>"]},
       "cases": {
@@ -338,14 +334,14 @@
           {"title": "Support-Automation", "kpi": "-25% FRT", "summary": "Support-Team ohne Priorisierung, SLA-Verfehlungen und fehlende Transparenz.", "problem": "Problem", "problemCopy": "Tickets warteten zu lange; Priorisierung fehlte.", "solution": "Lösung", "solutionCopy": "Bot klassifiziert Tickets, SLA-Alerts, Auto-Routing nach Kompetenz.", "result": "Ergebnis", "resultCopy": "–25% First-Response-Time, –30% Eskalationen.", "stack": ["Zendesk", "Python", "Snowflake"], "cta": "Automation-Angebot sichern"}
         ]
       },
-      "cta": {"title": "Bereit für weniger Klickarbeit?", "subtitle": "Wir zeigen in 30 Minuten, welche Automatisierung morgen live gehen kann.", "button": "Kostenloses Erstgespräch"},
-      "footer": {"copy": "Digitale Lösungen aus Zürich. Automatisierung, Integrationen, Web.", "address": "Limmatquai 1, 8001 Zürich", "contact": "Kontakt", "legal": "Rechtliches", "imprint": "Impressum", "privacy": "Datenschutz", "sitemap": "Sitemap", "cta": "Kostenloses Erstgespräch"},
+      "cta": {"title": "Bereit für weniger Klickarbeit?", "subtitle": "Wir zeigen in 30 Minuten, welche Automatisierung morgen live gehen kann.", "button": "Projekt anfragen"},
+      "footer": {"copy": "Digitale Lösungen aus Zürich. Automatisierung, Integrationen, Web.", "address": "Limmatquai 1, 8001 Zürich", "contact": "Kontakt", "legal": "Rechtliches", "imprint": "Impressum", "privacy": "Datenschutz", "sitemap": "Sitemap", "cta": "Projekt anfragen"},
       "modal": {"title": "Kurz Projekt skizzieren", "intro": "Teilen Sie kurz Ziel, Budget und Zeithorizont – wir melden uns in maximal 24 Stunden."},
-      "form": {"name": "Name *", "email": "E-Mail *", "phone": "Telefon", "company": "Firma", "budget": "Budgetrahmen *", "message": "Projektbeschreibung *", "timeline": "Zeithorizont *", "project": "Art des Projekts *", "consent": "Ich stimme der Verarbeitung meiner Angaben zum Zweck der Kontaktaufnahme zu.", "select": "Bitte wählen", "submit": "Abschicken", "note": "Antwort in spätestens 24h, inkl. nächster Schritte."}
+      "form": {"name": "Name *", "email": "E-Mail *", "phone": "Telefon", "company": "Firma", "budget": "Budgetrahmen *", "message": "Projektbeschreibung *", "timeline": "Zeithorizont *", "project": "Art des Projekts *", "consent": "Ich stimme der Verarbeitung meiner Angaben zum Zweck der Kontaktaufnahme zu.", "select": "Bitte wählen", "submit": "Projekt anfragen", "note": "Antwort in spätestens 24h, inkl. nächster Schritte."}
     },
     "en": {
       "common": {"skip": "Skip to content"},
-      "nav": {"home": "Home", "services": "Services", "work": "Work", "about": "About", "contact": "Contact", "cta": "Free discovery call"},
+      "nav": {"home": "Home", "services": "Services", "work": "Work", "about": "About", "contact": "Contact", "cta": "Request project"},
       "hero": {"tagline": "Proof over promises", "title": "Our case studies show tangible business impact.", "subtitle": "Recruiting, support and sales automation – everything is measured and published.", "primaryCta": "View case overview", "secondaryCta": "See KPIs"},
       "metrics": {"title": "Results in numbers", "subtitle": "Average values from the last 12 months segmented by category.", "items": ["<strong>-42%</strong><span>manual admin time</span>", "<strong>+38%</strong><span>qualified leads</span>", "<strong>-25%</strong><span>first response time</span>"]},
       "cases": {
@@ -358,10 +354,10 @@
           {"title": "Support automation", "kpi": "-25% FRT", "summary": "Support team lacked prioritisation, SLAs and transparency.", "problem": "Problem", "problemCopy": "Tickets waited too long; no prioritisation in place.", "solution": "Solution", "solutionCopy": "Bot-based classification, SLA alerts and skill-based auto-routing.", "result": "Result", "resultCopy": "–25% first response time, –30% escalations.", "stack": ["Zendesk", "Python", "Snowflake"], "cta": "Secure automation offer"}
         ]
       },
-      "cta": {"title": "Ready to remove busywork?", "subtitle": "In 30 minutes we map the automation that can launch tomorrow.", "button": "Free discovery call"},
-      "footer": {"copy": "Digital solutions from Zurich. Automation, integrations, web.", "address": "Limmatquai 1, 8001 Zurich", "contact": "Contact", "legal": "Legal", "imprint": "Imprint", "privacy": "Privacy", "sitemap": "Sitemap", "cta": "Free discovery call"},
+      "cta": {"title": "Ready to remove busywork?", "subtitle": "In 30 minutes we map the automation that can launch tomorrow.", "button": "Request project"},
+      "footer": {"copy": "Digital solutions from Zurich. Automation, integrations, web.", "address": "Limmatquai 1, 8001 Zurich", "contact": "Contact", "legal": "Legal", "imprint": "Imprint", "privacy": "Privacy", "sitemap": "Sitemap", "cta": "Request project"},
       "modal": {"title": "Outline your project", "intro": "Share goals, budget and timing – we respond within 24 hours."},
-      "form": {"name": "Name *", "email": "Email *", "phone": "Phone", "company": "Company", "budget": "Budget range *", "message": "Project description *", "timeline": "Timeline *", "project": "Project type *", "consent": "I agree that my details will be processed for contacting me.", "select": "Please choose", "submit": "Send", "note": "Reply within 24h including next steps."}
+      "form": {"name": "Name *", "email": "Email *", "phone": "Phone", "company": "Company", "budget": "Budget range *", "message": "Project description *", "timeline": "Timeline *", "project": "Project type *", "consent": "I agree that my details will be processed for contacting me.", "select": "Please choose", "submit": "Request project", "note": "Reply within 24h including next steps."}
     }
   }
   </script>
