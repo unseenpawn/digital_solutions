@@ -1,6 +1,11 @@
 const projectRoot = new URL('../..', import.meta.url);
 const basePath = projectRoot.pathname.endsWith('/') ? projectRoot.pathname : `${projectRoot.pathname}/`;
 const baseUrl = new URL(basePath, window.location.origin);
+const derivedSiteBase = basePath === '/' ? '' : basePath.replace(/\/$/, '');
+
+if (typeof window !== 'undefined' && typeof window.__SITE_BASE__ === 'undefined' && derivedSiteBase) {
+  window.__SITE_BASE__ = derivedSiteBase;
+}
 
 function isExternal(target) {
   return /^(?:[a-z]+:)?\/\//i.test(target) || target.startsWith('mailto:') || target.startsWith('tel:');
