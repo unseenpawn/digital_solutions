@@ -18,7 +18,8 @@ function prefixSitePath(value = '') {
   const query = searchPart ? `?${searchPart}` : '';
   const hash = hashPart ? `#${hashPart}` : '';
   if (!SITE_BASE_WITH_SLASH) {
-    return `${normalisedPath}${query}${hash}`;
+    const preservedPath = pathPart && pathPart.startsWith('/') ? pathPart : normalisedPath;
+    return `${preservedPath}${query}${hash}`;
   }
   if (beforeHash.startsWith(SITE_BASE_WITH_SLASH) || beforeHash === SITE_BASE) {
     return `${beforeHash}${hash}`;
@@ -270,6 +271,7 @@ function applyTranslations(locale) {
   applyRoutingConfig();
   applySeoHosts();
   updateThemeToggleState(currentTheme);
+  collectCountTargets();
   logEvent('locale_change', { locale });
 }
 
@@ -342,6 +344,8 @@ onReady(() => {
   applyRoutingConfig();
   applySeoHosts();
   updateLanguageToggleUI();
+  collectCountTargets();
+  initStickyCtaVisibility();
 });
 
 if (langToggleButton) {
@@ -424,6 +428,154 @@ function markActiveCTAButtons() {
 markActiveCTAButtons();
 
 const stickyCta = document.querySelector('[data-sticky-cta]');
+const countTargetMap = new Map();
+let countObserver = null;
+let stickyCtaShouldShow = false;
+let stickyCtaManualHidden = false;
+let stickyCtaHeroInView = true;
+let stickyCtaFooterInView = false;
+
+function formatCountValue(value, config) {
+  const decimals = Number.isFinite(config.decimals) ? config.decimals : 0;
+  const locale = currentLocale === 'en' ? 'en-US' : 'de-CH';
+  const formatter = new Intl.NumberFormat(locale, {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  });
+  const formatted = formatter.format(value);
+  const prefix = config.prefix || '';
+  const suffix = config.suffix || '';
+  return `${prefix}${formatted}${suffix}`;
+}
+
+function animateCount(config) {
+  if (config.animated) {
+    return;
+  }
+  config.animated = true;
+  if (prefersReducedMotion) {
+    config.target.textContent = formatCountValue(config.value, config);
+    return;
+  }
+  const startValue = 0;
+  const targetValue = config.value;
+  const duration = Math.max(300, config.duration);
+  const startTime = performance.now();
+
+  function tick(now) {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const currentValue = startValue + (targetValue - startValue) * eased;
+    config.target.textContent = formatCountValue(progress < 1 ? currentValue : targetValue, config);
+    if (progress < 1) {
+      requestAnimationFrame(tick);
+    }
+  }
+
+  requestAnimationFrame(tick);
+}
+
+function collectCountTargets() {
+  countObserver?.disconnect();
+  countObserver = null;
+  countTargetMap.clear();
+  document.querySelectorAll('[data-count]').forEach((el) => {
+    const targetValue = Number(el.dataset.count);
+    if (!Number.isFinite(targetValue)) {
+      return;
+    }
+    const selector = el.dataset.countSelector || 'strong';
+    const target = selector === 'self' ? el : el.querySelector(selector) || el.querySelector('strong') || el;
+    if (!target) {
+      return;
+    }
+    const config = {
+      element: el,
+      target,
+      value: targetValue,
+      prefix: el.dataset.countPrefix || '',
+      suffix: el.dataset.countSuffix || '',
+      decimals: Number(el.dataset.countDecimals || '0'),
+      duration: Number(el.dataset.countDuration || '1200'),
+      animated: false,
+    };
+    target.textContent = formatCountValue(0, config);
+    countTargetMap.set(el, config);
+  });
+
+  if (!countTargetMap.size) {
+    return;
+  }
+
+  if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+    countTargetMap.forEach((config) => {
+      config.target.textContent = formatCountValue(config.value, config);
+    });
+    return;
+  }
+
+  countObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const config = countTargetMap.get(entry.target);
+        if (config) {
+          animateCount(config);
+          countObserver?.unobserve(entry.target);
+        }
+      }
+    });
+  }, { threshold: 0.4, rootMargin: '0px 0px -10% 0px' });
+
+  countTargetMap.forEach((config, el) => {
+    countObserver?.observe(el);
+  });
+}
+
+function updateStickyCtaState() {
+  if (!stickyCta) return;
+  const visible = stickyCtaShouldShow && !stickyCtaManualHidden;
+  stickyCta.classList.toggle('is-visible', visible);
+  stickyCta.setAttribute('aria-hidden', visible ? 'false' : 'true');
+}
+
+function initStickyCtaVisibility() {
+  if (!stickyCta) return;
+  stickyCta.setAttribute('aria-hidden', 'true');
+  if (!('IntersectionObserver' in window)) {
+    stickyCtaShouldShow = true;
+    updateStickyCtaState();
+    return;
+  }
+  const heroSection = document.getElementById('hero');
+  const footer = document.querySelector('footer');
+
+  if (heroSection) {
+    const heroObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.target === heroSection) {
+          stickyCtaHeroInView = entry.isIntersecting;
+        }
+      });
+      stickyCtaShouldShow = !stickyCtaHeroInView && !stickyCtaFooterInView;
+      updateStickyCtaState();
+    }, { threshold: 0.2 });
+    heroObserver.observe(heroSection);
+  } else {
+    stickyCtaHeroInView = false;
+    stickyCtaShouldShow = !stickyCtaFooterInView;
+    updateStickyCtaState();
+  }
+
+  if (footer) {
+    const footerObserver = new IntersectionObserver((entries) => {
+      stickyCtaFooterInView = entries.some((entry) => entry.isIntersecting);
+      stickyCtaShouldShow = !stickyCtaHeroInView && !stickyCtaFooterInView;
+      updateStickyCtaState();
+    }, { threshold: 0.05 });
+    footerObserver.observe(footer);
+  }
+}
 
 const contactModal = document.querySelector('[data-contact-modal]');
 let modalFocusElements = [];
@@ -491,7 +643,8 @@ function openContactModal(source = 'unknown', preset = {}) {
   document.addEventListener('keydown', focusTrapModal);
   modalFocusElements[0]?.focus();
   if (stickyCta) {
-    stickyCta.setAttribute('aria-hidden', 'true');
+    stickyCtaManualHidden = true;
+    updateStickyCtaState();
   }
   logEvent('contact_modal_open', { source });
   const modalForm = contactModal.querySelector('form[data-contact-form]');
@@ -514,7 +667,8 @@ function closeContactModal() {
   document.removeEventListener('keydown', focusTrapModal);
   modalOpen = false;
   if (stickyCta) {
-    stickyCta.setAttribute('aria-hidden', 'false');
+    stickyCtaManualHidden = false;
+    updateStickyCtaState();
   }
   modalPreviousFocus?.focus();
 }
@@ -593,6 +747,7 @@ function handleReducedMotionChange(event) {
   } else {
     setupRevealObserver();
   }
+  collectCountTargets();
 }
 
 const initialRevealElements = document.querySelectorAll('.reveal');
